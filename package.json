@@ -1,0 +1,30 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "start": "DEBUG=coachsnap:* concurrently \"yarn start:dashboard\" \"yarn start:backend\"",
+    "dev": "DEBUG=coachsnap:* concurrently \"yarn dev:dashboard\" \"yarn start:backend\"",
+    "build:dashboard": "lerna exec --stream --scope=dashboard -- yarn build --no-source-maps",
+    "start:dashboard": "lerna exec --stream --scope=dashboard -- yarn start",
+    "dev:dashboard": "lerna exec --stream --scope=dashboard -- yarn dev",
+    "test:dashboard": "lerna exec --stream --scope=dashboard -- yarn test",
+    "start:backend": "lerna exec --stream --scope=backend -- yarn start",
+    "deploy:backend": "lerna exec --stream --scope=backend -- yarn deploy",
+    "admin:backend": "lerna exec --stream --scope=backend -- yarn admin",
+    "reset:backend": "lerna exec --stream --scope=backend -- yarn reset",
+    "seed:backend": "lerna exec --stream --scope=backend -- yarn seed",
+    "test:backend": "lerna exec --stream --scope=backend -- yarn test",
+    "bootstrap": "lerna bootstrap --force-local",
+    "lint": "lerna exec --bail=false -- eslint . --fix"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "concurrently": "^4.1.2",
+    "dotenv-cli": "^2.0.1",
+    "lerna": "^3.13.1",
+    "prettier": "^1.18.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

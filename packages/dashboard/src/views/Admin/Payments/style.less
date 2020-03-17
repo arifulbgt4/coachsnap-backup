@@ -1,0 +1,40 @@
+.admin-transaction {
+  .ps__rail-x {
+    z-index: 9;
+  }
+  .admin-payment-action {
+    float: right;
+    @media only screen and (max-width: 575px) {
+      float: unset;
+      padding: 0;
+    }
+    .ant-select {
+      width: 120px;
+      padding: 0 5px;
+      @media only screen and (max-width: 480px) {
+        width: auto !important;
+      }
+      .ant-select-selection__rendered {
+        @media only screen and (max-width: 480px) {
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 575px) {
+  .admin-transaction {
+    .admin-payment-action {
+      display: block;
+      margin-top: 10px;
+      button {
+        float: inherit !important;
+        margin: 15px 0;
+        display: block;
+      }
+      span {
+        float: inherit !important;
+      }
+    }
+  }
+}

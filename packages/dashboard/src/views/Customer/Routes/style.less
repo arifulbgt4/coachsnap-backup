@@ -1,0 +1,28 @@
+.customer-panel-layout {
+  .ant-layout-content {
+    width: calc(100% - 128px);
+    margin: 24px 24px 24px 104px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .customer-panel-layout {
+    .ant-layout-content {
+      width: auto;
+      margin: 24px;
+    }
+  }
+  .ant-form-item .ant-form-item-required {
+    &::before {
+      right: 0 !important;
+    }
+  }
+}
+
+.ant-drawer-content-wrapper {
+  @media only screen and (max-width: 768px) {
+    width: calc(100% - 80px) !important;
+  }
+  @media only screen and (max-width: 480px) {
+    width: calc(100% - 20px) !important;
+  }
+}

@@ -1,0 +1,44 @@
+type Charge {
+  _id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  coach: User!
+  id: String! @unique
+  stripe_user_id: String!
+  ##
+  # Amount charged in cents/pence, positive integer or zero.
+  ##
+  amount: Float!
+
+  ##
+  # Amount in cents/pence refunded (can be less than the amount attribute on the
+  # charge if a partial refund was issued), positive integer or zero.
+  ##
+  amount_refunded: Float!
+
+  ##
+  # The amount of the application fee (if any) for the charge. See the Connect
+  # documentation for details.
+  ##
+  application_fee_amount: Float
+
+  description: String
+
+  ##
+  # This is the URL to view the receipt for this charge. The receipt is kept up-to-date to the
+  # latest state of the charge, including any refunds. If the charge is for an Invoice, the
+  # receipt will be stylized as an Invoice receipt.
+  ##
+  receipt_url: String!
+
+  ##
+  # Whether or not the charge has been fully refunded. If the charge is only partially refunded,
+  # this attribute will still be false.
+  ##
+  refunded: Boolean!
+
+  ##
+  # A list of refunds that have been applied to the charge.
+  ##
+  currency: String!
+}

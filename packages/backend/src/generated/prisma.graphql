@@ -1,0 +1,4370 @@
+type Activity {
+  id: ID!
+  user: User
+  createdAt: DateTime!
+  content: Content
+}
+
+type ActivityConnection {
+  pageInfo: PageInfo!
+  edges: [ActivityEdge]!
+  aggregate: AggregateActivity!
+}
+
+input ActivityCreateInput {
+  id: ID
+  user: UserCreateOneWithoutActivitiesInput
+  content: ContentCreateOneInput
+}
+
+input ActivityCreateManyWithoutUserInput {
+  create: [ActivityCreateWithoutUserInput!]
+  connect: [ActivityWhereUniqueInput!]
+}
+
+input ActivityCreateWithoutUserInput {
+  id: ID
+  content: ContentCreateOneInput
+}
+
+type ActivityEdge {
+  node: Activity!
+  cursor: String!
+}
+
+enum ActivityOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ActivityPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+}
+
+input ActivityScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [ActivityScalarWhereInput!]
+  OR: [ActivityScalarWhereInput!]
+  NOT: [ActivityScalarWhereInput!]
+}
+
+type ActivitySubscriptionPayload {
+  mutation: MutationType!
+  node: Activity
+  updatedFields: [String!]
+  previousValues: ActivityPreviousValues
+}
+
+input ActivitySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ActivityWhereInput
+  AND: [ActivitySubscriptionWhereInput!]
+}
+
+input ActivityUpdateInput {
+  user: UserUpdateOneWithoutActivitiesInput
+  content: ContentUpdateOneInput
+}
+
+input ActivityUpdateManyWithoutUserInput {
+  create: [ActivityCreateWithoutUserInput!]
+  delete: [ActivityWhereUniqueInput!]
+  connect: [ActivityWhereUniqueInput!]
+  set: [ActivityWhereUniqueInput!]
+  disconnect: [ActivityWhereUniqueInput!]
+  update: [ActivityUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [ActivityUpsertWithWhereUniqueWithoutUserInput!]
+  deleteMany: [ActivityScalarWhereInput!]
+}
+
+input ActivityUpdateWithoutUserDataInput {
+  content: ContentUpdateOneInput
+}
+
+input ActivityUpdateWithWhereUniqueWithoutUserInput {
+  where: ActivityWhereUniqueInput!
+  data: ActivityUpdateWithoutUserDataInput!
+}
+
+input ActivityUpsertWithWhereUniqueWithoutUserInput {
+  where: ActivityWhereUniqueInput!
+  update: ActivityUpdateWithoutUserDataInput!
+  create: ActivityCreateWithoutUserInput!
+}
+
+input ActivityWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  user: UserWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  content: ContentWhereInput
+  AND: [ActivityWhereInput!]
+}
+
+input ActivityWhereUniqueInput {
+  id: ID
+}
+
+type AggregateActivity {
+  count: Int!
+}
+
+type AggregateAvailability {
+  count: Int!
+}
+
+type AggregateBooking {
+  count: Int!
+}
+
+type AggregateBusinessHour {
+  count: Int!
+}
+
+type AggregateCharge {
+  count: Int!
+}
+
+type AggregateContent {
+  count: Int!
+}
+
+type AggregateCustomer {
+  count: Int!
+}
+
+type AggregateImage {
+  count: Int!
+}
+
+type AggregateLastLogin {
+  count: Int!
+}
+
+type AggregateSession {
+  count: Int!
+}
+
+type AggregateSessionType {
+  count: Int!
+}
+
+type AggregateStripeAccount {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type Availability {
+  id: ID!
+  start: DateTime!
+  end: DateTime!
+}
+
+type AvailabilityConnection {
+  pageInfo: PageInfo!
+  edges: [AvailabilityEdge]!
+  aggregate: AggregateAvailability!
+}
+
+input AvailabilityCreateInput {
+  id: ID
+  start: DateTime!
+  end: DateTime!
+}
+
+input AvailabilityCreateOneInput {
+  create: AvailabilityCreateInput
+  connect: AvailabilityWhereUniqueInput
+}
+
+type AvailabilityEdge {
+  node: Availability!
+  cursor: String!
+}
+
+enum AvailabilityOrderByInput {
+  id_ASC
+  id_DESC
+  start_ASC
+  start_DESC
+  end_ASC
+  end_DESC
+}
+
+type AvailabilityPreviousValues {
+  id: ID!
+  start: DateTime!
+  end: DateTime!
+}
+
+type AvailabilitySubscriptionPayload {
+  mutation: MutationType!
+  node: Availability
+  updatedFields: [String!]
+  previousValues: AvailabilityPreviousValues
+}
+
+input AvailabilitySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: AvailabilityWhereInput
+  AND: [AvailabilitySubscriptionWhereInput!]
+}
+
+input AvailabilityUpdateDataInput {
+  start: DateTime
+  end: DateTime
+}
+
+input AvailabilityUpdateInput {
+  start: DateTime
+  end: DateTime
+}
+
+input AvailabilityUpdateManyMutationInput {
+  start: DateTime
+  end: DateTime
+}
+
+input AvailabilityUpdateOneRequiredInput {
+  create: AvailabilityCreateInput
+  update: AvailabilityUpdateDataInput
+  upsert: AvailabilityUpsertNestedInput
+  connect: AvailabilityWhereUniqueInput
+}
+
+input AvailabilityUpsertNestedInput {
+  update: AvailabilityUpdateDataInput!
+  create: AvailabilityCreateInput!
+}
+
+input AvailabilityWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  start: DateTime
+  start_not: DateTime
+  start_in: [DateTime!]
+  start_not_in: [DateTime!]
+  start_lt: DateTime
+  start_lte: DateTime
+  start_gt: DateTime
+  start_gte: DateTime
+  end: DateTime
+  end_not: DateTime
+  end_in: [DateTime!]
+  end_not_in: [DateTime!]
+  end_lt: DateTime
+  end_lte: DateTime
+  end_gt: DateTime
+  end_gte: DateTime
+  AND: [AvailabilityWhereInput!]
+}
+
+input AvailabilityWhereUniqueInput {
+  id: ID
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+type Booking {
+  id: ID!
+  customer: Customer
+  session: Session!
+  timeSlot: String
+  charge: Charge
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BookingConnection {
+  pageInfo: PageInfo!
+  edges: [BookingEdge]!
+  aggregate: AggregateBooking!
+}
+
+input BookingCreateInput {
+  id: ID
+  customer: CustomerCreateOneInput
+  session: SessionCreateOneWithoutBookingsInput!
+  timeSlot: String
+  charge: ChargeCreateOneInput
+}
+
+input BookingCreateManyWithoutSessionInput {
+  create: [BookingCreateWithoutSessionInput!]
+  connect: [BookingWhereUniqueInput!]
+}
+
+input BookingCreateWithoutSessionInput {
+  id: ID
+  customer: CustomerCreateOneInput
+  timeSlot: String
+  charge: ChargeCreateOneInput
+}
+
+type BookingEdge {
+  node: Booking!
+  cursor: String!
+}
+
+enum BookingOrderByInput {
+  id_ASC
+  id_DESC
+  timeSlot_ASC
+  timeSlot_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type BookingPreviousValues {
+  id: ID!
+  timeSlot: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input BookingScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  timeSlot: String
+  timeSlot_not: String
+  timeSlot_in: [String!]
+  timeSlot_not_in: [String!]
+  timeSlot_lt: String
+  timeSlot_lte: String
+  timeSlot_gt: String
+  timeSlot_gte: String
+  timeSlot_contains: String
+  timeSlot_not_contains: String
+  timeSlot_starts_with: String
+  timeSlot_not_starts_with: String
+  timeSlot_ends_with: String
+  timeSlot_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [BookingScalarWhereInput!]
+  OR: [BookingScalarWhereInput!]
+  NOT: [BookingScalarWhereInput!]
+}
+
+type BookingSubscriptionPayload {
+  mutation: MutationType!
+  node: Booking
+  updatedFields: [String!]
+  previousValues: BookingPreviousValues
+}
+
+input BookingSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BookingWhereInput
+  AND: [BookingSubscriptionWhereInput!]
+}
+
+input BookingUpdateInput {
+  customer: CustomerUpdateOneInput
+  session: SessionUpdateOneRequiredWithoutBookingsInput
+  timeSlot: String
+  charge: ChargeUpdateOneInput
+}
+
+input BookingUpdateManyDataInput {
+  timeSlot: String
+}
+
+input BookingUpdateManyMutationInput {
+  timeSlot: String
+}
+
+input BookingUpdateManyWithoutSessionInput {
+  create: [BookingCreateWithoutSessionInput!]
+  delete: [BookingWhereUniqueInput!]
+  connect: [BookingWhereUniqueInput!]
+  set: [BookingWhereUniqueInput!]
+  disconnect: [BookingWhereUniqueInput!]
+  update: [BookingUpdateWithWhereUniqueWithoutSessionInput!]
+  upsert: [BookingUpsertWithWhereUniqueWithoutSessionInput!]
+  deleteMany: [BookingScalarWhereInput!]
+  updateMany: [BookingUpdateManyWithWhereNestedInput!]
+}
+
+input BookingUpdateManyWithWhereNestedInput {
+  where: BookingScalarWhereInput!
+  data: BookingUpdateManyDataInput!
+}
+
+input BookingUpdateWithoutSessionDataInput {
+  customer: CustomerUpdateOneInput
+  timeSlot: String
+  charge: ChargeUpdateOneInput
+}
+
+input BookingUpdateWithWhereUniqueWithoutSessionInput {
+  where: BookingWhereUniqueInput!
+  data: BookingUpdateWithoutSessionDataInput!
+}
+
+input BookingUpsertWithWhereUniqueWithoutSessionInput {
+  where: BookingWhereUniqueInput!
+  update: BookingUpdateWithoutSessionDataInput!
+  create: BookingCreateWithoutSessionInput!
+}
+
+input BookingWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  customer: CustomerWhereInput
+  session: SessionWhereInput
+  timeSlot: String
+  timeSlot_not: String
+  timeSlot_in: [String!]
+  timeSlot_not_in: [String!]
+  timeSlot_lt: String
+  timeSlot_lte: String
+  timeSlot_gt: String
+  timeSlot_gte: String
+  timeSlot_contains: String
+  timeSlot_not_contains: String
+  timeSlot_starts_with: String
+  timeSlot_not_starts_with: String
+  timeSlot_ends_with: String
+  timeSlot_not_ends_with: String
+  charge: ChargeWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [BookingWhereInput!]
+}
+
+input BookingWhereUniqueInput {
+  id: ID
+}
+
+type BusinessHour {
+  id: ID!
+  start: String
+  end: String
+}
+
+type BusinessHourConnection {
+  pageInfo: PageInfo!
+  edges: [BusinessHourEdge]!
+  aggregate: AggregateBusinessHour!
+}
+
+input BusinessHourCreateInput {
+  id: ID
+  start: String
+  end: String
+}
+
+input BusinessHourCreateOneInput {
+  create: BusinessHourCreateInput
+  connect: BusinessHourWhereUniqueInput
+}
+
+type BusinessHourEdge {
+  node: BusinessHour!
+  cursor: String!
+}
+
+enum BusinessHourOrderByInput {
+  id_ASC
+  id_DESC
+  start_ASC
+  start_DESC
+  end_ASC
+  end_DESC
+}
+
+type BusinessHourPreviousValues {
+  id: ID!
+  start: String
+  end: String
+}
+
+type BusinessHourSubscriptionPayload {
+  mutation: MutationType!
+  node: BusinessHour
+  updatedFields: [String!]
+  previousValues: BusinessHourPreviousValues
+}
+
+input BusinessHourSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BusinessHourWhereInput
+  AND: [BusinessHourSubscriptionWhereInput!]
+}
+
+input BusinessHourUpdateDataInput {
+  start: String
+  end: String
+}
+
+input BusinessHourUpdateInput {
+  start: String
+  end: String
+}
+
+input BusinessHourUpdateManyMutationInput {
+  start: String
+  end: String
+}
+
+input BusinessHourUpdateOneInput {
+  create: BusinessHourCreateInput
+  update: BusinessHourUpdateDataInput
+  upsert: BusinessHourUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: BusinessHourWhereUniqueInput
+}
+
+input BusinessHourUpsertNestedInput {
+  update: BusinessHourUpdateDataInput!
+  create: BusinessHourCreateInput!
+}
+
+input BusinessHourWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  start: String
+  start_not: String
+  start_in: [String!]
+  start_not_in: [String!]
+  start_lt: String
+  start_lte: String
+  start_gt: String
+  start_gte: String
+  start_contains: String
+  start_not_contains: String
+  start_starts_with: String
+  start_not_starts_with: String
+  start_ends_with: String
+  start_not_ends_with: String
+  end: String
+  end_not: String
+  end_in: [String!]
+  end_not_in: [String!]
+  end_lt: String
+  end_lte: String
+  end_gt: String
+  end_gte: String
+  end_contains: String
+  end_not_contains: String
+  end_starts_with: String
+  end_not_starts_with: String
+  end_ends_with: String
+  end_not_ends_with: String
+  AND: [BusinessHourWhereInput!]
+}
+
+input BusinessHourWhereUniqueInput {
+  id: ID
+}
+
+type Charge {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  coach: User!
+  id: String!
+  stripe_user_id: String!
+  amount: Float!
+  amount_refunded: Float!
+  application_fee_amount: Float
+  description: String
+  receipt_url: String!
+  refunded: Boolean!
+  currency: String!
+}
+
+type ChargeConnection {
+  pageInfo: PageInfo!
+  edges: [ChargeEdge]!
+  aggregate: AggregateCharge!
+}
+
+input ChargeCreateInput {
+  _id: ID
+  coach: UserCreateOneInput!
+  id: String!
+  stripe_user_id: String!
+  amount: Float!
+  amount_refunded: Float!
+  application_fee_amount: Float
+  description: String
+  receipt_url: String!
+  refunded: Boolean!
+  currency: String!
+}
+
+input ChargeCreateOneInput {
+  create: ChargeCreateInput
+  connect: ChargeWhereUniqueInput
+}
+
+type ChargeEdge {
+  node: Charge!
+  cursor: String!
+}
+
+enum ChargeOrderByInput {
+  _id_ASC
+  _id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  id_ASC
+  id_DESC
+  stripe_user_id_ASC
+  stripe_user_id_DESC
+  amount_ASC
+  amount_DESC
+  amount_refunded_ASC
+  amount_refunded_DESC
+  application_fee_amount_ASC
+  application_fee_amount_DESC
+  description_ASC
+  description_DESC
+  receipt_url_ASC
+  receipt_url_DESC
+  refunded_ASC
+  refunded_DESC
+  currency_ASC
+  currency_DESC
+}
+
+type ChargePreviousValues {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: String!
+  stripe_user_id: String!
+  amount: Float!
+  amount_refunded: Float!
+  application_fee_amount: Float
+  description: String
+  receipt_url: String!
+  refunded: Boolean!
+  currency: String!
+}
+
+type ChargeSubscriptionPayload {
+  mutation: MutationType!
+  node: Charge
+  updatedFields: [String!]
+  previousValues: ChargePreviousValues
+}
+
+input ChargeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ChargeWhereInput
+  AND: [ChargeSubscriptionWhereInput!]
+}
+
+input ChargeUpdateDataInput {
+  coach: UserUpdateOneRequiredInput
+  id: String
+  stripe_user_id: String
+  amount: Float
+  amount_refunded: Float
+  application_fee_amount: Float
+  description: String
+  receipt_url: String
+  refunded: Boolean
+  currency: String
+}
+
+input ChargeUpdateInput {
+  coach: UserUpdateOneRequiredInput
+  id: String
+  stripe_user_id: String
+  amount: Float
+  amount_refunded: Float
+  application_fee_amount: Float
+  description: String
+  receipt_url: String
+  refunded: Boolean
+  currency: String
+}
+
+input ChargeUpdateManyMutationInput {
+  id: String
+  stripe_user_id: String
+  amount: Float
+  amount_refunded: Float
+  application_fee_amount: Float
+  description: String
+  receipt_url: String
+  refunded: Boolean
+  currency: String
+}
+
+input ChargeUpdateOneInput {
+  create: ChargeCreateInput
+  update: ChargeUpdateDataInput
+  upsert: ChargeUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ChargeWhereUniqueInput
+}
+
+input ChargeUpsertNestedInput {
+  update: ChargeUpdateDataInput!
+  create: ChargeCreateInput!
+}
+
+input ChargeWhereInput {
+  _id: ID
+  _id_not: ID
+  _id_in: [ID!]
+  _id_not_in: [ID!]
+  _id_lt: ID
+  _id_lte: ID
+  _id_gt: ID
+  _id_gte: ID
+  _id_contains: ID
+  _id_not_contains: ID
+  _id_starts_with: ID
+  _id_not_starts_with: ID
+  _id_ends_with: ID
+  _id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  coach: UserWhereInput
+  id: String
+  id_not: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_lt: String
+  id_lte: String
+  id_gt: String
+  id_gte: String
+  id_contains: String
+  id_not_contains: String
+  id_starts_with: String
+  id_not_starts_with: String
+  id_ends_with: String
+  id_not_ends_with: String
+  stripe_user_id: String
+  stripe_user_id_not: String
+  stripe_user_id_in: [String!]
+  stripe_user_id_not_in: [String!]
+  stripe_user_id_lt: String
+  stripe_user_id_lte: String
+  stripe_user_id_gt: String
+  stripe_user_id_gte: String
+  stripe_user_id_contains: String
+  stripe_user_id_not_contains: String
+  stripe_user_id_starts_with: String
+  stripe_user_id_not_starts_with: String
+  stripe_user_id_ends_with: String
+  stripe_user_id_not_ends_with: String
+  amount: Float
+  amount_not: Float
+  amount_in: [Float!]
+  amount_not_in: [Float!]
+  amount_lt: Float
+  amount_lte: Float
+  amount_gt: Float
+  amount_gte: Float
+  amount_refunded: Float
+  amount_refunded_not: Float
+  amount_refunded_in: [Float!]
+  amount_refunded_not_in: [Float!]
+  amount_refunded_lt: Float
+  amount_refunded_lte: Float
+  amount_refunded_gt: Float
+  amount_refunded_gte: Float
+  application_fee_amount: Float
+  application_fee_amount_not: Float
+  application_fee_amount_in: [Float!]
+  application_fee_amount_not_in: [Float!]
+  application_fee_amount_lt: Float
+  application_fee_amount_lte: Float
+  application_fee_amount_gt: Float
+  application_fee_amount_gte: Float
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  receipt_url: String
+  receipt_url_not: String
+  receipt_url_in: [String!]
+  receipt_url_not_in: [String!]
+  receipt_url_lt: String
+  receipt_url_lte: String
+  receipt_url_gt: String
+  receipt_url_gte: String
+  receipt_url_contains: String
+  receipt_url_not_contains: String
+  receipt_url_starts_with: String
+  receipt_url_not_starts_with: String
+  receipt_url_ends_with: String
+  receipt_url_not_ends_with: String
+  refunded: Boolean
+  refunded_not: Boolean
+  currency: String
+  currency_not: String
+  currency_in: [String!]
+  currency_not_in: [String!]
+  currency_lt: String
+  currency_lte: String
+  currency_gt: String
+  currency_gte: String
+  currency_contains: String
+  currency_not_contains: String
+  currency_starts_with: String
+  currency_not_starts_with: String
+  currency_ends_with: String
+  currency_not_ends_with: String
+  AND: [ChargeWhereInput!]
+}
+
+input ChargeWhereUniqueInput {
+  _id: ID
+  id: String
+}
+
+type Content {
+  id: ID!
+  type: String
+  message: String
+}
+
+type ContentConnection {
+  pageInfo: PageInfo!
+  edges: [ContentEdge]!
+  aggregate: AggregateContent!
+}
+
+input ContentCreateInput {
+  id: ID
+  type: String
+  message: String
+}
+
+input ContentCreateOneInput {
+  create: ContentCreateInput
+  connect: ContentWhereUniqueInput
+}
+
+type ContentEdge {
+  node: Content!
+  cursor: String!
+}
+
+enum ContentOrderByInput {
+  id_ASC
+  id_DESC
+  type_ASC
+  type_DESC
+  message_ASC
+  message_DESC
+}
+
+type ContentPreviousValues {
+  id: ID!
+  type: String
+  message: String
+}
+
+type ContentSubscriptionPayload {
+  mutation: MutationType!
+  node: Content
+  updatedFields: [String!]
+  previousValues: ContentPreviousValues
+}
+
+input ContentSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ContentWhereInput
+  AND: [ContentSubscriptionWhereInput!]
+}
+
+input ContentUpdateDataInput {
+  type: String
+  message: String
+}
+
+input ContentUpdateInput {
+  type: String
+  message: String
+}
+
+input ContentUpdateManyMutationInput {
+  type: String
+  message: String
+}
+
+input ContentUpdateOneInput {
+  create: ContentCreateInput
+  update: ContentUpdateDataInput
+  upsert: ContentUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ContentWhereUniqueInput
+}
+
+input ContentUpsertNestedInput {
+  update: ContentUpdateDataInput!
+  create: ContentCreateInput!
+}
+
+input ContentWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  message: String
+  message_not: String
+  message_in: [String!]
+  message_not_in: [String!]
+  message_lt: String
+  message_lte: String
+  message_gt: String
+  message_gte: String
+  message_contains: String
+  message_not_contains: String
+  message_starts_with: String
+  message_not_starts_with: String
+  message_ends_with: String
+  message_not_ends_with: String
+  AND: [ContentWhereInput!]
+}
+
+input ContentWhereUniqueInput {
+  id: ID
+}
+
+type Customer {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  coach: User!
+  role: Role!
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean!
+  name: String!
+  password: String
+  profileImage: Image
+  coverImage: Image
+  stripeAccount: StripeAccount
+}
+
+type CustomerConnection {
+  pageInfo: PageInfo!
+  edges: [CustomerEdge]!
+  aggregate: AggregateCustomer!
+}
+
+input CustomerCreateInput {
+  id: ID
+  coach: UserCreateOneWithoutCustomersInput!
+  role: Role
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  name: String!
+  password: String
+  profileImage: ImageCreateOneInput
+  coverImage: ImageCreateOneInput
+  stripeAccount: StripeAccountCreateOneInput
+}
+
+input CustomerCreateManyWithoutCoachInput {
+  create: [CustomerCreateWithoutCoachInput!]
+  connect: [CustomerWhereUniqueInput!]
+}
+
+input CustomerCreateOneInput {
+  create: CustomerCreateInput
+  connect: CustomerWhereUniqueInput
+}
+
+input CustomerCreateWithoutCoachInput {
+  id: ID
+  role: Role
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  name: String!
+  password: String
+  profileImage: ImageCreateOneInput
+  coverImage: ImageCreateOneInput
+  stripeAccount: StripeAccountCreateOneInput
+}
+
+type CustomerEdge {
+  node: Customer!
+  cursor: String!
+}
+
+enum CustomerOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  role_ASC
+  role_DESC
+  email_ASC
+  email_DESC
+  emailToken_ASC
+  emailToken_DESC
+  emailTokenExpiry_ASC
+  emailTokenExpiry_DESC
+  inviteToken_ASC
+  inviteToken_DESC
+  inviteTokenExpiry_ASC
+  inviteTokenExpiry_DESC
+  resetToken_ASC
+  resetToken_DESC
+  resetTokenExpiry_ASC
+  resetTokenExpiry_DESC
+  verified_ASC
+  verified_DESC
+  name_ASC
+  name_DESC
+  password_ASC
+  password_DESC
+}
+
+type CustomerPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  role: Role!
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean!
+  name: String!
+  password: String
+}
+
+input CustomerScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  role: Role
+  role_not: Role
+  role_in: [Role!]
+  role_not_in: [Role!]
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  emailToken: String
+  emailToken_not: String
+  emailToken_in: [String!]
+  emailToken_not_in: [String!]
+  emailToken_lt: String
+  emailToken_lte: String
+  emailToken_gt: String
+  emailToken_gte: String
+  emailToken_contains: String
+  emailToken_not_contains: String
+  emailToken_starts_with: String
+  emailToken_not_starts_with: String
+  emailToken_ends_with: String
+  emailToken_not_ends_with: String
+  emailTokenExpiry: Float
+  emailTokenExpiry_not: Float
+  emailTokenExpiry_in: [Float!]
+  emailTokenExpiry_not_in: [Float!]
+  emailTokenExpiry_lt: Float
+  emailTokenExpiry_lte: Float
+  emailTokenExpiry_gt: Float
+  emailTokenExpiry_gte: Float
+  inviteToken: String
+  inviteToken_not: String
+  inviteToken_in: [String!]
+  inviteToken_not_in: [String!]
+  inviteToken_lt: String
+  inviteToken_lte: String
+  inviteToken_gt: String
+  inviteToken_gte: String
+  inviteToken_contains: String
+  inviteToken_not_contains: String
+  inviteToken_starts_with: String
+  inviteToken_not_starts_with: String
+  inviteToken_ends_with: String
+  inviteToken_not_ends_with: String
+  inviteTokenExpiry: Float
+  inviteTokenExpiry_not: Float
+  inviteTokenExpiry_in: [Float!]
+  inviteTokenExpiry_not_in: [Float!]
+  inviteTokenExpiry_lt: Float
+  inviteTokenExpiry_lte: Float
+  inviteTokenExpiry_gt: Float
+  inviteTokenExpiry_gte: Float
+  resetToken: String
+  resetToken_not: String
+  resetToken_in: [String!]
+  resetToken_not_in: [String!]
+  resetToken_lt: String
+  resetToken_lte: String
+  resetToken_gt: String
+  resetToken_gte: String
+  resetToken_contains: String
+  resetToken_not_contains: String
+  resetToken_starts_with: String
+  resetToken_not_starts_with: String
+  resetToken_ends_with: String
+  resetToken_not_ends_with: String
+  resetTokenExpiry: Float
+  resetTokenExpiry_not: Float
+  resetTokenExpiry_in: [Float!]
+  resetTokenExpiry_not_in: [Float!]
+  resetTokenExpiry_lt: Float
+  resetTokenExpiry_lte: Float
+  resetTokenExpiry_gt: Float
+  resetTokenExpiry_gte: Float
+  verified: Boolean
+  verified_not: Boolean
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  AND: [CustomerScalarWhereInput!]
+  OR: [CustomerScalarWhereInput!]
+  NOT: [CustomerScalarWhereInput!]
+}
+
+type CustomerSubscriptionPayload {
+  mutation: MutationType!
+  node: Customer
+  updatedFields: [String!]
+  previousValues: CustomerPreviousValues
+}
+
+input CustomerSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CustomerWhereInput
+  AND: [CustomerSubscriptionWhereInput!]
+}
+
+input CustomerUpdateDataInput {
+  coach: UserUpdateOneRequiredWithoutCustomersInput
+  role: Role
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  name: String
+  password: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+}
+
+input CustomerUpdateInput {
+  coach: UserUpdateOneRequiredWithoutCustomersInput
+  role: Role
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  name: String
+  password: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+}
+
+input CustomerUpdateManyDataInput {
+  role: Role
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  name: String
+  password: String
+}
+
+input CustomerUpdateManyMutationInput {
+  role: Role
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  name: String
+  password: String
+}
+
+input CustomerUpdateManyWithoutCoachInput {
+  create: [CustomerCreateWithoutCoachInput!]
+  delete: [CustomerWhereUniqueInput!]
+  connect: [CustomerWhereUniqueInput!]
+  set: [CustomerWhereUniqueInput!]
+  disconnect: [CustomerWhereUniqueInput!]
+  update: [CustomerUpdateWithWhereUniqueWithoutCoachInput!]
+  upsert: [CustomerUpsertWithWhereUniqueWithoutCoachInput!]
+  deleteMany: [CustomerScalarWhereInput!]
+  updateMany: [CustomerUpdateManyWithWhereNestedInput!]
+}
+
+input CustomerUpdateManyWithWhereNestedInput {
+  where: CustomerScalarWhereInput!
+  data: CustomerUpdateManyDataInput!
+}
+
+input CustomerUpdateOneInput {
+  create: CustomerCreateInput
+  update: CustomerUpdateDataInput
+  upsert: CustomerUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: CustomerWhereUniqueInput
+}
+
+input CustomerUpdateWithoutCoachDataInput {
+  role: Role
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  name: String
+  password: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+}
+
+input CustomerUpdateWithWhereUniqueWithoutCoachInput {
+  where: CustomerWhereUniqueInput!
+  data: CustomerUpdateWithoutCoachDataInput!
+}
+
+input CustomerUpsertNestedInput {
+  update: CustomerUpdateDataInput!
+  create: CustomerCreateInput!
+}
+
+input CustomerUpsertWithWhereUniqueWithoutCoachInput {
+  where: CustomerWhereUniqueInput!
+  update: CustomerUpdateWithoutCoachDataInput!
+  create: CustomerCreateWithoutCoachInput!
+}
+
+input CustomerWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  coach: UserWhereInput
+  role: Role
+  role_not: Role
+  role_in: [Role!]
+  role_not_in: [Role!]
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  emailToken: String
+  emailToken_not: String
+  emailToken_in: [String!]
+  emailToken_not_in: [String!]
+  emailToken_lt: String
+  emailToken_lte: String
+  emailToken_gt: String
+  emailToken_gte: String
+  emailToken_contains: String
+  emailToken_not_contains: String
+  emailToken_starts_with: String
+  emailToken_not_starts_with: String
+  emailToken_ends_with: String
+  emailToken_not_ends_with: String
+  emailTokenExpiry: Float
+  emailTokenExpiry_not: Float
+  emailTokenExpiry_in: [Float!]
+  emailTokenExpiry_not_in: [Float!]
+  emailTokenExpiry_lt: Float
+  emailTokenExpiry_lte: Float
+  emailTokenExpiry_gt: Float
+  emailTokenExpiry_gte: Float
+  inviteToken: String
+  inviteToken_not: String
+  inviteToken_in: [String!]
+  inviteToken_not_in: [String!]
+  inviteToken_lt: String
+  inviteToken_lte: String
+  inviteToken_gt: String
+  inviteToken_gte: String
+  inviteToken_contains: String
+  inviteToken_not_contains: String
+  inviteToken_starts_with: String
+  inviteToken_not_starts_with: String
+  inviteToken_ends_with: String
+  inviteToken_not_ends_with: String
+  inviteTokenExpiry: Float
+  inviteTokenExpiry_not: Float
+  inviteTokenExpiry_in: [Float!]
+  inviteTokenExpiry_not_in: [Float!]
+  inviteTokenExpiry_lt: Float
+  inviteTokenExpiry_lte: Float
+  inviteTokenExpiry_gt: Float
+  inviteTokenExpiry_gte: Float
+  resetToken: String
+  resetToken_not: String
+  resetToken_in: [String!]
+  resetToken_not_in: [String!]
+  resetToken_lt: String
+  resetToken_lte: String
+  resetToken_gt: String
+  resetToken_gte: String
+  resetToken_contains: String
+  resetToken_not_contains: String
+  resetToken_starts_with: String
+  resetToken_not_starts_with: String
+  resetToken_ends_with: String
+  resetToken_not_ends_with: String
+  resetTokenExpiry: Float
+  resetTokenExpiry_not: Float
+  resetTokenExpiry_in: [Float!]
+  resetTokenExpiry_not_in: [Float!]
+  resetTokenExpiry_lt: Float
+  resetTokenExpiry_lte: Float
+  resetTokenExpiry_gt: Float
+  resetTokenExpiry_gte: Float
+  verified: Boolean
+  verified_not: Boolean
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  profileImage: ImageWhereInput
+  coverImage: ImageWhereInput
+  stripeAccount: StripeAccountWhereInput
+  AND: [CustomerWhereInput!]
+}
+
+input CustomerWhereUniqueInput {
+  id: ID
+  emailToken: String
+}
+
+scalar DateTime
+
+type Image {
+  id: ID!
+  url: String!
+  width: Int!
+  height: Int!
+}
+
+type ImageConnection {
+  pageInfo: PageInfo!
+  edges: [ImageEdge]!
+  aggregate: AggregateImage!
+}
+
+input ImageCreateInput {
+  id: ID
+  url: String!
+  width: Int!
+  height: Int!
+}
+
+input ImageCreateOneInput {
+  create: ImageCreateInput
+  connect: ImageWhereUniqueInput
+}
+
+type ImageEdge {
+  node: Image!
+  cursor: String!
+}
+
+enum ImageOrderByInput {
+  id_ASC
+  id_DESC
+  url_ASC
+  url_DESC
+  width_ASC
+  width_DESC
+  height_ASC
+  height_DESC
+}
+
+type ImagePreviousValues {
+  id: ID!
+  url: String!
+  width: Int!
+  height: Int!
+}
+
+type ImageSubscriptionPayload {
+  mutation: MutationType!
+  node: Image
+  updatedFields: [String!]
+  previousValues: ImagePreviousValues
+}
+
+input ImageSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ImageWhereInput
+  AND: [ImageSubscriptionWhereInput!]
+}
+
+input ImageUpdateDataInput {
+  url: String
+  width: Int
+  height: Int
+}
+
+input ImageUpdateInput {
+  url: String
+  width: Int
+  height: Int
+}
+
+input ImageUpdateManyMutationInput {
+  url: String
+  width: Int
+  height: Int
+}
+
+input ImageUpdateOneInput {
+  create: ImageCreateInput
+  update: ImageUpdateDataInput
+  upsert: ImageUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ImageWhereUniqueInput
+}
+
+input ImageUpsertNestedInput {
+  update: ImageUpdateDataInput!
+  create: ImageCreateInput!
+}
+
+input ImageWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  width: Int
+  width_not: Int
+  width_in: [Int!]
+  width_not_in: [Int!]
+  width_lt: Int
+  width_lte: Int
+  width_gt: Int
+  width_gte: Int
+  height: Int
+  height_not: Int
+  height_in: [Int!]
+  height_not_in: [Int!]
+  height_lt: Int
+  height_lte: Int
+  height_gt: Int
+  height_gte: Int
+  AND: [ImageWhereInput!]
+}
+
+input ImageWhereUniqueInput {
+  id: ID
+}
+
+type LastLogin {
+  id: ID!
+  date: DateTime!
+  action: String!
+}
+
+type LastLoginConnection {
+  pageInfo: PageInfo!
+  edges: [LastLoginEdge]!
+  aggregate: AggregateLastLogin!
+}
+
+input LastLoginCreateInput {
+  id: ID
+  action: String!
+}
+
+input LastLoginCreateOneInput {
+  create: LastLoginCreateInput
+  connect: LastLoginWhereUniqueInput
+}
+
+type LastLoginEdge {
+  node: LastLogin!
+  cursor: String!
+}
+
+enum LastLoginOrderByInput {
+  id_ASC
+  id_DESC
+  date_ASC
+  date_DESC
+  action_ASC
+  action_DESC
+}
+
+type LastLoginPreviousValues {
+  id: ID!
+  date: DateTime!
+  action: String!
+}
+
+type LastLoginSubscriptionPayload {
+  mutation: MutationType!
+  node: LastLogin
+  updatedFields: [String!]
+  previousValues: LastLoginPreviousValues
+}
+
+input LastLoginSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: LastLoginWhereInput
+  AND: [LastLoginSubscriptionWhereInput!]
+}
+
+input LastLoginUpdateDataInput {
+  action: String
+}
+
+input LastLoginUpdateInput {
+  action: String
+}
+
+input LastLoginUpdateManyMutationInput {
+  action: String
+}
+
+input LastLoginUpdateOneInput {
+  create: LastLoginCreateInput
+  update: LastLoginUpdateDataInput
+  upsert: LastLoginUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: LastLoginWhereUniqueInput
+}
+
+input LastLoginUpsertNestedInput {
+  update: LastLoginUpdateDataInput!
+  create: LastLoginCreateInput!
+}
+
+input LastLoginWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  date: DateTime
+  date_not: DateTime
+  date_in: [DateTime!]
+  date_not_in: [DateTime!]
+  date_lt: DateTime
+  date_lte: DateTime
+  date_gt: DateTime
+  date_gte: DateTime
+  action: String
+  action_not: String
+  action_in: [String!]
+  action_not_in: [String!]
+  action_lt: String
+  action_lte: String
+  action_gt: String
+  action_gte: String
+  action_contains: String
+  action_not_contains: String
+  action_starts_with: String
+  action_not_starts_with: String
+  action_ends_with: String
+  action_not_ends_with: String
+  AND: [LastLoginWhereInput!]
+}
+
+input LastLoginWhereUniqueInput {
+  id: ID
+}
+
+scalar Long
+
+type Mutation {
+  createActivity(data: ActivityCreateInput!): Activity!
+  updateActivity(data: ActivityUpdateInput!, where: ActivityWhereUniqueInput!): Activity
+  upsertActivity(where: ActivityWhereUniqueInput!, create: ActivityCreateInput!, update: ActivityUpdateInput!): Activity!
+  deleteActivity(where: ActivityWhereUniqueInput!): Activity
+  deleteManyActivities(where: ActivityWhereInput): BatchPayload!
+  createAvailability(data: AvailabilityCreateInput!): Availability!
+  updateAvailability(data: AvailabilityUpdateInput!, where: AvailabilityWhereUniqueInput!): Availability
+  updateManyAvailabilities(data: AvailabilityUpdateManyMutationInput!, where: AvailabilityWhereInput): BatchPayload!
+  upsertAvailability(where: AvailabilityWhereUniqueInput!, create: AvailabilityCreateInput!, update: AvailabilityUpdateInput!): Availability!
+  deleteAvailability(where: AvailabilityWhereUniqueInput!): Availability
+  deleteManyAvailabilities(where: AvailabilityWhereInput): BatchPayload!
+  createBooking(data: BookingCreateInput!): Booking!
+  updateBooking(data: BookingUpdateInput!, where: BookingWhereUniqueInput!): Booking
+  updateManyBookings(data: BookingUpdateManyMutationInput!, where: BookingWhereInput): BatchPayload!
+  upsertBooking(where: BookingWhereUniqueInput!, create: BookingCreateInput!, update: BookingUpdateInput!): Booking!
+  deleteBooking(where: BookingWhereUniqueInput!): Booking
+  deleteManyBookings(where: BookingWhereInput): BatchPayload!
+  createBusinessHour(data: BusinessHourCreateInput!): BusinessHour!
+  updateBusinessHour(data: BusinessHourUpdateInput!, where: BusinessHourWhereUniqueInput!): BusinessHour
+  updateManyBusinessHours(data: BusinessHourUpdateManyMutationInput!, where: BusinessHourWhereInput): BatchPayload!
+  upsertBusinessHour(where: BusinessHourWhereUniqueInput!, create: BusinessHourCreateInput!, update: BusinessHourUpdateInput!): BusinessHour!
+  deleteBusinessHour(where: BusinessHourWhereUniqueInput!): BusinessHour
+  deleteManyBusinessHours(where: BusinessHourWhereInput): BatchPayload!
+  createCharge(data: ChargeCreateInput!): Charge!
+  updateCharge(data: ChargeUpdateInput!, where: ChargeWhereUniqueInput!): Charge
+  updateManyCharges(data: ChargeUpdateManyMutationInput!, where: ChargeWhereInput): BatchPayload!
+  upsertCharge(where: ChargeWhereUniqueInput!, create: ChargeCreateInput!, update: ChargeUpdateInput!): Charge!
+  deleteCharge(where: ChargeWhereUniqueInput!): Charge
+  deleteManyCharges(where: ChargeWhereInput): BatchPayload!
+  createContent(data: ContentCreateInput!): Content!
+  updateContent(data: ContentUpdateInput!, where: ContentWhereUniqueInput!): Content
+  updateManyContents(data: ContentUpdateManyMutationInput!, where: ContentWhereInput): BatchPayload!
+  upsertContent(where: ContentWhereUniqueInput!, create: ContentCreateInput!, update: ContentUpdateInput!): Content!
+  deleteContent(where: ContentWhereUniqueInput!): Content
+  deleteManyContents(where: ContentWhereInput): BatchPayload!
+  createCustomer(data: CustomerCreateInput!): Customer!
+  updateCustomer(data: CustomerUpdateInput!, where: CustomerWhereUniqueInput!): Customer
+  updateManyCustomers(data: CustomerUpdateManyMutationInput!, where: CustomerWhereInput): BatchPayload!
+  upsertCustomer(where: CustomerWhereUniqueInput!, create: CustomerCreateInput!, update: CustomerUpdateInput!): Customer!
+  deleteCustomer(where: CustomerWhereUniqueInput!): Customer
+  deleteManyCustomers(where: CustomerWhereInput): BatchPayload!
+  createImage(data: ImageCreateInput!): Image!
+  updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
+  updateManyImages(data: ImageUpdateManyMutationInput!, where: ImageWhereInput): BatchPayload!
+  upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
+  deleteImage(where: ImageWhereUniqueInput!): Image
+  deleteManyImages(where: ImageWhereInput): BatchPayload!
+  createLastLogin(data: LastLoginCreateInput!): LastLogin!
+  updateLastLogin(data: LastLoginUpdateInput!, where: LastLoginWhereUniqueInput!): LastLogin
+  updateManyLastLogins(data: LastLoginUpdateManyMutationInput!, where: LastLoginWhereInput): BatchPayload!
+  upsertLastLogin(where: LastLoginWhereUniqueInput!, create: LastLoginCreateInput!, update: LastLoginUpdateInput!): LastLogin!
+  deleteLastLogin(where: LastLoginWhereUniqueInput!): LastLogin
+  deleteManyLastLogins(where: LastLoginWhereInput): BatchPayload!
+  createSession(data: SessionCreateInput!): Session!
+  updateSession(data: SessionUpdateInput!, where: SessionWhereUniqueInput!): Session
+  updateManySessions(data: SessionUpdateManyMutationInput!, where: SessionWhereInput): BatchPayload!
+  upsertSession(where: SessionWhereUniqueInput!, create: SessionCreateInput!, update: SessionUpdateInput!): Session!
+  deleteSession(where: SessionWhereUniqueInput!): Session
+  deleteManySessions(where: SessionWhereInput): BatchPayload!
+  createSessionType(data: SessionTypeCreateInput!): SessionType!
+  updateSessionType(data: SessionTypeUpdateInput!, where: SessionTypeWhereUniqueInput!): SessionType
+  updateManySessionTypes(data: SessionTypeUpdateManyMutationInput!, where: SessionTypeWhereInput): BatchPayload!
+  upsertSessionType(where: SessionTypeWhereUniqueInput!, create: SessionTypeCreateInput!, update: SessionTypeUpdateInput!): SessionType!
+  deleteSessionType(where: SessionTypeWhereUniqueInput!): SessionType
+  deleteManySessionTypes(where: SessionTypeWhereInput): BatchPayload!
+  createStripeAccount(data: StripeAccountCreateInput!): StripeAccount!
+  updateStripeAccount(data: StripeAccountUpdateInput!, where: StripeAccountWhereUniqueInput!): StripeAccount
+  updateManyStripeAccounts(data: StripeAccountUpdateManyMutationInput!, where: StripeAccountWhereInput): BatchPayload!
+  upsertStripeAccount(where: StripeAccountWhereUniqueInput!, create: StripeAccountCreateInput!, update: StripeAccountUpdateInput!): StripeAccount!
+  deleteStripeAccount(where: StripeAccountWhereUniqueInput!): StripeAccount
+  deleteManyStripeAccounts(where: StripeAccountWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  activity(where: ActivityWhereUniqueInput!): Activity
+  activities(where: ActivityWhereInput, orderBy: ActivityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Activity]!
+  activitiesConnection(where: ActivityWhereInput, orderBy: ActivityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ActivityConnection!
+  availability(where: AvailabilityWhereUniqueInput!): Availability
+  availabilities(where: AvailabilityWhereInput, orderBy: AvailabilityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Availability]!
+  availabilitiesConnection(where: AvailabilityWhereInput, orderBy: AvailabilityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AvailabilityConnection!
+  booking(where: BookingWhereUniqueInput!): Booking
+  bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking]!
+  bookingsConnection(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BookingConnection!
+  businessHour(where: BusinessHourWhereUniqueInput!): BusinessHour
+  businessHours(where: BusinessHourWhereInput, orderBy: BusinessHourOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BusinessHour]!
+  businessHoursConnection(where: BusinessHourWhereInput, orderBy: BusinessHourOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BusinessHourConnection!
+  charge(where: ChargeWhereUniqueInput!): Charge
+  charges(where: ChargeWhereInput, orderBy: ChargeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Charge]!
+  chargesConnection(where: ChargeWhereInput, orderBy: ChargeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ChargeConnection!
+  content(where: ContentWhereUniqueInput!): Content
+  contents(where: ContentWhereInput, orderBy: ContentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Content]!
+  contentsConnection(where: ContentWhereInput, orderBy: ContentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ContentConnection!
+  customer(where: CustomerWhereUniqueInput!): Customer
+  customers(where: CustomerWhereInput, orderBy: CustomerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Customer]!
+  customersConnection(where: CustomerWhereInput, orderBy: CustomerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CustomerConnection!
+  image(where: ImageWhereUniqueInput!): Image
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image]!
+  imagesConnection(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ImageConnection!
+  lastLogin(where: LastLoginWhereUniqueInput!): LastLogin
+  lastLogins(where: LastLoginWhereInput, orderBy: LastLoginOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [LastLogin]!
+  lastLoginsConnection(where: LastLoginWhereInput, orderBy: LastLoginOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LastLoginConnection!
+  session(where: SessionWhereUniqueInput!): Session
+  sessions(where: SessionWhereInput, orderBy: SessionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Session]!
+  sessionsConnection(where: SessionWhereInput, orderBy: SessionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SessionConnection!
+  sessionType(where: SessionTypeWhereUniqueInput!): SessionType
+  sessionTypes(where: SessionTypeWhereInput, orderBy: SessionTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SessionType]!
+  sessionTypesConnection(where: SessionTypeWhereInput, orderBy: SessionTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SessionTypeConnection!
+  stripeAccount(where: StripeAccountWhereUniqueInput!): StripeAccount
+  stripeAccounts(where: StripeAccountWhereInput, orderBy: StripeAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StripeAccount]!
+  stripeAccountsConnection(where: StripeAccountWhereInput, orderBy: StripeAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StripeAccountConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+enum Role {
+  ADMIN
+  COACH
+  CUSTOMER
+}
+
+type Session {
+  id: ID!
+  coach: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  sessionType: SessionType
+  name: String!
+  description: String
+  location: String!
+  link: String
+  recurring: Boolean
+  availability: Availability!
+  maxSeats: Int!
+  singleEvent: Boolean
+  businessHour: BusinessHour
+  duration: Int!
+  bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
+  coverImage: Image
+  cost: Int
+}
+
+type SessionConnection {
+  pageInfo: PageInfo!
+  edges: [SessionEdge]!
+  aggregate: AggregateSession!
+}
+
+input SessionCreateInput {
+  id: ID
+  coach: UserCreateOneInput
+  sessionType: SessionTypeCreateOneWithoutSessionsInput
+  name: String!
+  description: String
+  location: String!
+  link: String
+  recurring: Boolean
+  availability: AvailabilityCreateOneInput!
+  maxSeats: Int
+  singleEvent: Boolean
+  businessHour: BusinessHourCreateOneInput
+  duration: Int!
+  bookings: BookingCreateManyWithoutSessionInput
+  coverImage: ImageCreateOneInput
+  cost: Int
+}
+
+input SessionCreateManyWithoutSessionTypeInput {
+  create: [SessionCreateWithoutSessionTypeInput!]
+  connect: [SessionWhereUniqueInput!]
+}
+
+input SessionCreateOneWithoutBookingsInput {
+  create: SessionCreateWithoutBookingsInput
+  connect: SessionWhereUniqueInput
+}
+
+input SessionCreateWithoutBookingsInput {
+  id: ID
+  coach: UserCreateOneInput
+  sessionType: SessionTypeCreateOneWithoutSessionsInput
+  name: String!
+  description: String
+  location: String!
+  link: String
+  recurring: Boolean
+  availability: AvailabilityCreateOneInput!
+  maxSeats: Int
+  singleEvent: Boolean
+  businessHour: BusinessHourCreateOneInput
+  duration: Int!
+  coverImage: ImageCreateOneInput
+  cost: Int
+}
+
+input SessionCreateWithoutSessionTypeInput {
+  id: ID
+  coach: UserCreateOneInput
+  name: String!
+  description: String
+  location: String!
+  link: String
+  recurring: Boolean
+  availability: AvailabilityCreateOneInput!
+  maxSeats: Int
+  singleEvent: Boolean
+  businessHour: BusinessHourCreateOneInput
+  duration: Int!
+  bookings: BookingCreateManyWithoutSessionInput
+  coverImage: ImageCreateOneInput
+  cost: Int
+}
+
+type SessionEdge {
+  node: Session!
+  cursor: String!
+}
+
+enum SessionOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  location_ASC
+  location_DESC
+  link_ASC
+  link_DESC
+  recurring_ASC
+  recurring_DESC
+  maxSeats_ASC
+  maxSeats_DESC
+  singleEvent_ASC
+  singleEvent_DESC
+  duration_ASC
+  duration_DESC
+  cost_ASC
+  cost_DESC
+}
+
+type SessionPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String
+  location: String!
+  link: String
+  recurring: Boolean
+  maxSeats: Int!
+  singleEvent: Boolean
+  duration: Int!
+  cost: Int
+}
+
+input SessionScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  location: String
+  location_not: String
+  location_in: [String!]
+  location_not_in: [String!]
+  location_lt: String
+  location_lte: String
+  location_gt: String
+  location_gte: String
+  location_contains: String
+  location_not_contains: String
+  location_starts_with: String
+  location_not_starts_with: String
+  location_ends_with: String
+  location_not_ends_with: String
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  recurring: Boolean
+  recurring_not: Boolean
+  maxSeats: Int
+  maxSeats_not: Int
+  maxSeats_in: [Int!]
+  maxSeats_not_in: [Int!]
+  maxSeats_lt: Int
+  maxSeats_lte: Int
+  maxSeats_gt: Int
+  maxSeats_gte: Int
+  singleEvent: Boolean
+  singleEvent_not: Boolean
+  duration: Int
+  duration_not: Int
+  duration_in: [Int!]
+  duration_not_in: [Int!]
+  duration_lt: Int
+  duration_lte: Int
+  duration_gt: Int
+  duration_gte: Int
+  cost: Int
+  cost_not: Int
+  cost_in: [Int!]
+  cost_not_in: [Int!]
+  cost_lt: Int
+  cost_lte: Int
+  cost_gt: Int
+  cost_gte: Int
+  AND: [SessionScalarWhereInput!]
+  OR: [SessionScalarWhereInput!]
+  NOT: [SessionScalarWhereInput!]
+}
+
+type SessionSubscriptionPayload {
+  mutation: MutationType!
+  node: Session
+  updatedFields: [String!]
+  previousValues: SessionPreviousValues
+}
+
+input SessionSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SessionWhereInput
+  AND: [SessionSubscriptionWhereInput!]
+}
+
+type SessionType {
+  id: ID!
+  coach: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String
+  duration: Int!
+  maxSeats: Int!
+  cost: Int!
+  sessions(where: SessionWhereInput, orderBy: SessionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Session!]
+}
+
+type SessionTypeConnection {
+  pageInfo: PageInfo!
+  edges: [SessionTypeEdge]!
+  aggregate: AggregateSessionType!
+}
+
+input SessionTypeCreateInput {
+  id: ID
+  coach: UserCreateOneWithoutSessionTypesInput
+  name: String!
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int!
+  sessions: SessionCreateManyWithoutSessionTypeInput
+}
+
+input SessionTypeCreateManyWithoutCoachInput {
+  create: [SessionTypeCreateWithoutCoachInput!]
+  connect: [SessionTypeWhereUniqueInput!]
+}
+
+input SessionTypeCreateOneWithoutSessionsInput {
+  create: SessionTypeCreateWithoutSessionsInput
+  connect: SessionTypeWhereUniqueInput
+}
+
+input SessionTypeCreateWithoutCoachInput {
+  id: ID
+  name: String!
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int!
+  sessions: SessionCreateManyWithoutSessionTypeInput
+}
+
+input SessionTypeCreateWithoutSessionsInput {
+  id: ID
+  coach: UserCreateOneWithoutSessionTypesInput
+  name: String!
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int!
+}
+
+type SessionTypeEdge {
+  node: SessionType!
+  cursor: String!
+}
+
+enum SessionTypeOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  duration_ASC
+  duration_DESC
+  maxSeats_ASC
+  maxSeats_DESC
+  cost_ASC
+  cost_DESC
+}
+
+type SessionTypePreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String
+  duration: Int!
+  maxSeats: Int!
+  cost: Int!
+}
+
+input SessionTypeScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  duration: Int
+  duration_not: Int
+  duration_in: [Int!]
+  duration_not_in: [Int!]
+  duration_lt: Int
+  duration_lte: Int
+  duration_gt: Int
+  duration_gte: Int
+  maxSeats: Int
+  maxSeats_not: Int
+  maxSeats_in: [Int!]
+  maxSeats_not_in: [Int!]
+  maxSeats_lt: Int
+  maxSeats_lte: Int
+  maxSeats_gt: Int
+  maxSeats_gte: Int
+  cost: Int
+  cost_not: Int
+  cost_in: [Int!]
+  cost_not_in: [Int!]
+  cost_lt: Int
+  cost_lte: Int
+  cost_gt: Int
+  cost_gte: Int
+  AND: [SessionTypeScalarWhereInput!]
+  OR: [SessionTypeScalarWhereInput!]
+  NOT: [SessionTypeScalarWhereInput!]
+}
+
+type SessionTypeSubscriptionPayload {
+  mutation: MutationType!
+  node: SessionType
+  updatedFields: [String!]
+  previousValues: SessionTypePreviousValues
+}
+
+input SessionTypeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SessionTypeWhereInput
+  AND: [SessionTypeSubscriptionWhereInput!]
+}
+
+input SessionTypeUpdateInput {
+  coach: UserUpdateOneWithoutSessionTypesInput
+  name: String
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int
+  sessions: SessionUpdateManyWithoutSessionTypeInput
+}
+
+input SessionTypeUpdateManyDataInput {
+  name: String
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int
+}
+
+input SessionTypeUpdateManyMutationInput {
+  name: String
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int
+}
+
+input SessionTypeUpdateManyWithoutCoachInput {
+  create: [SessionTypeCreateWithoutCoachInput!]
+  delete: [SessionTypeWhereUniqueInput!]
+  connect: [SessionTypeWhereUniqueInput!]
+  set: [SessionTypeWhereUniqueInput!]
+  disconnect: [SessionTypeWhereUniqueInput!]
+  update: [SessionTypeUpdateWithWhereUniqueWithoutCoachInput!]
+  upsert: [SessionTypeUpsertWithWhereUniqueWithoutCoachInput!]
+  deleteMany: [SessionTypeScalarWhereInput!]
+  updateMany: [SessionTypeUpdateManyWithWhereNestedInput!]
+}
+
+input SessionTypeUpdateManyWithWhereNestedInput {
+  where: SessionTypeScalarWhereInput!
+  data: SessionTypeUpdateManyDataInput!
+}
+
+input SessionTypeUpdateOneWithoutSessionsInput {
+  create: SessionTypeCreateWithoutSessionsInput
+  update: SessionTypeUpdateWithoutSessionsDataInput
+  upsert: SessionTypeUpsertWithoutSessionsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: SessionTypeWhereUniqueInput
+}
+
+input SessionTypeUpdateWithoutCoachDataInput {
+  name: String
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int
+  sessions: SessionUpdateManyWithoutSessionTypeInput
+}
+
+input SessionTypeUpdateWithoutSessionsDataInput {
+  coach: UserUpdateOneWithoutSessionTypesInput
+  name: String
+  description: String
+  duration: Int
+  maxSeats: Int
+  cost: Int
+}
+
+input SessionTypeUpdateWithWhereUniqueWithoutCoachInput {
+  where: SessionTypeWhereUniqueInput!
+  data: SessionTypeUpdateWithoutCoachDataInput!
+}
+
+input SessionTypeUpsertWithoutSessionsInput {
+  update: SessionTypeUpdateWithoutSessionsDataInput!
+  create: SessionTypeCreateWithoutSessionsInput!
+}
+
+input SessionTypeUpsertWithWhereUniqueWithoutCoachInput {
+  where: SessionTypeWhereUniqueInput!
+  update: SessionTypeUpdateWithoutCoachDataInput!
+  create: SessionTypeCreateWithoutCoachInput!
+}
+
+input SessionTypeWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  coach: UserWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  duration: Int
+  duration_not: Int
+  duration_in: [Int!]
+  duration_not_in: [Int!]
+  duration_lt: Int
+  duration_lte: Int
+  duration_gt: Int
+  duration_gte: Int
+  maxSeats: Int
+  maxSeats_not: Int
+  maxSeats_in: [Int!]
+  maxSeats_not_in: [Int!]
+  maxSeats_lt: Int
+  maxSeats_lte: Int
+  maxSeats_gt: Int
+  maxSeats_gte: Int
+  cost: Int
+  cost_not: Int
+  cost_in: [Int!]
+  cost_not_in: [Int!]
+  cost_lt: Int
+  cost_lte: Int
+  cost_gt: Int
+  cost_gte: Int
+  sessions_some: SessionWhereInput
+  AND: [SessionTypeWhereInput!]
+}
+
+input SessionTypeWhereUniqueInput {
+  id: ID
+}
+
+input SessionUpdateInput {
+  coach: UserUpdateOneInput
+  sessionType: SessionTypeUpdateOneWithoutSessionsInput
+  name: String
+  description: String
+  location: String
+  link: String
+  recurring: Boolean
+  availability: AvailabilityUpdateOneRequiredInput
+  maxSeats: Int
+  singleEvent: Boolean
+  businessHour: BusinessHourUpdateOneInput
+  duration: Int
+  bookings: BookingUpdateManyWithoutSessionInput
+  coverImage: ImageUpdateOneInput
+  cost: Int
+}
+
+input SessionUpdateManyDataInput {
+  name: String
+  description: String
+  location: String
+  link: String
+  recurring: Boolean
+  maxSeats: Int
+  singleEvent: Boolean
+  duration: Int
+  cost: Int
+}
+
+input SessionUpdateManyMutationInput {
+  name: String
+  description: String
+  location: String
+  link: String
+  recurring: Boolean
+  maxSeats: Int
+  singleEvent: Boolean
+  duration: Int
+  cost: Int
+}
+
+input SessionUpdateManyWithoutSessionTypeInput {
+  create: [SessionCreateWithoutSessionTypeInput!]
+  delete: [SessionWhereUniqueInput!]
+  connect: [SessionWhereUniqueInput!]
+  set: [SessionWhereUniqueInput!]
+  disconnect: [SessionWhereUniqueInput!]
+  update: [SessionUpdateWithWhereUniqueWithoutSessionTypeInput!]
+  upsert: [SessionUpsertWithWhereUniqueWithoutSessionTypeInput!]
+  deleteMany: [SessionScalarWhereInput!]
+  updateMany: [SessionUpdateManyWithWhereNestedInput!]
+}
+
+input SessionUpdateManyWithWhereNestedInput {
+  where: SessionScalarWhereInput!
+  data: SessionUpdateManyDataInput!
+}
+
+input SessionUpdateOneRequiredWithoutBookingsInput {
+  create: SessionCreateWithoutBookingsInput
+  update: SessionUpdateWithoutBookingsDataInput
+  upsert: SessionUpsertWithoutBookingsInput
+  connect: SessionWhereUniqueInput
+}
+
+input SessionUpdateWithoutBookingsDataInput {
+  coach: UserUpdateOneInput
+  sessionType: SessionTypeUpdateOneWithoutSessionsInput
+  name: String
+  description: String
+  location: String
+  link: String
+  recurring: Boolean
+  availability: AvailabilityUpdateOneRequiredInput
+  maxSeats: Int
+  singleEvent: Boolean
+  businessHour: BusinessHourUpdateOneInput
+  duration: Int
+  coverImage: ImageUpdateOneInput
+  cost: Int
+}
+
+input SessionUpdateWithoutSessionTypeDataInput {
+  coach: UserUpdateOneInput
+  name: String
+  description: String
+  location: String
+  link: String
+  recurring: Boolean
+  availability: AvailabilityUpdateOneRequiredInput
+  maxSeats: Int
+  singleEvent: Boolean
+  businessHour: BusinessHourUpdateOneInput
+  duration: Int
+  bookings: BookingUpdateManyWithoutSessionInput
+  coverImage: ImageUpdateOneInput
+  cost: Int
+}
+
+input SessionUpdateWithWhereUniqueWithoutSessionTypeInput {
+  where: SessionWhereUniqueInput!
+  data: SessionUpdateWithoutSessionTypeDataInput!
+}
+
+input SessionUpsertWithoutBookingsInput {
+  update: SessionUpdateWithoutBookingsDataInput!
+  create: SessionCreateWithoutBookingsInput!
+}
+
+input SessionUpsertWithWhereUniqueWithoutSessionTypeInput {
+  where: SessionWhereUniqueInput!
+  update: SessionUpdateWithoutSessionTypeDataInput!
+  create: SessionCreateWithoutSessionTypeInput!
+}
+
+input SessionWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  coach: UserWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  sessionType: SessionTypeWhereInput
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  location: String
+  location_not: String
+  location_in: [String!]
+  location_not_in: [String!]
+  location_lt: String
+  location_lte: String
+  location_gt: String
+  location_gte: String
+  location_contains: String
+  location_not_contains: String
+  location_starts_with: String
+  location_not_starts_with: String
+  location_ends_with: String
+  location_not_ends_with: String
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  recurring: Boolean
+  recurring_not: Boolean
+  availability: AvailabilityWhereInput
+  maxSeats: Int
+  maxSeats_not: Int
+  maxSeats_in: [Int!]
+  maxSeats_not_in: [Int!]
+  maxSeats_lt: Int
+  maxSeats_lte: Int
+  maxSeats_gt: Int
+  maxSeats_gte: Int
+  singleEvent: Boolean
+  singleEvent_not: Boolean
+  businessHour: BusinessHourWhereInput
+  duration: Int
+  duration_not: Int
+  duration_in: [Int!]
+  duration_not_in: [Int!]
+  duration_lt: Int
+  duration_lte: Int
+  duration_gt: Int
+  duration_gte: Int
+  bookings_some: BookingWhereInput
+  coverImage: ImageWhereInput
+  cost: Int
+  cost_not: Int
+  cost_in: [Int!]
+  cost_not_in: [Int!]
+  cost_lt: Int
+  cost_lte: Int
+  cost_gt: Int
+  cost_gte: Int
+  AND: [SessionWhereInput!]
+}
+
+input SessionWhereUniqueInput {
+  id: ID
+}
+
+type StripeAccount {
+  id: ID!
+  stripe_user_id: String!
+  access_token: String!
+  scope: String!
+  livemode: Boolean!
+  token_type: String!
+  refresh_token: String!
+  stripe_publishable_key: String!
+}
+
+type StripeAccountConnection {
+  pageInfo: PageInfo!
+  edges: [StripeAccountEdge]!
+  aggregate: AggregateStripeAccount!
+}
+
+input StripeAccountCreateInput {
+  id: ID
+  stripe_user_id: String!
+  access_token: String!
+  scope: String!
+  livemode: Boolean!
+  token_type: String!
+  refresh_token: String!
+  stripe_publishable_key: String!
+}
+
+input StripeAccountCreateOneInput {
+  create: StripeAccountCreateInput
+  connect: StripeAccountWhereUniqueInput
+}
+
+type StripeAccountEdge {
+  node: StripeAccount!
+  cursor: String!
+}
+
+enum StripeAccountOrderByInput {
+  id_ASC
+  id_DESC
+  stripe_user_id_ASC
+  stripe_user_id_DESC
+  access_token_ASC
+  access_token_DESC
+  scope_ASC
+  scope_DESC
+  livemode_ASC
+  livemode_DESC
+  token_type_ASC
+  token_type_DESC
+  refresh_token_ASC
+  refresh_token_DESC
+  stripe_publishable_key_ASC
+  stripe_publishable_key_DESC
+}
+
+type StripeAccountPreviousValues {
+  id: ID!
+  stripe_user_id: String!
+  access_token: String!
+  scope: String!
+  livemode: Boolean!
+  token_type: String!
+  refresh_token: String!
+  stripe_publishable_key: String!
+}
+
+type StripeAccountSubscriptionPayload {
+  mutation: MutationType!
+  node: StripeAccount
+  updatedFields: [String!]
+  previousValues: StripeAccountPreviousValues
+}
+
+input StripeAccountSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: StripeAccountWhereInput
+  AND: [StripeAccountSubscriptionWhereInput!]
+}
+
+input StripeAccountUpdateDataInput {
+  stripe_user_id: String
+  access_token: String
+  scope: String
+  livemode: Boolean
+  token_type: String
+  refresh_token: String
+  stripe_publishable_key: String
+}
+
+input StripeAccountUpdateInput {
+  stripe_user_id: String
+  access_token: String
+  scope: String
+  livemode: Boolean
+  token_type: String
+  refresh_token: String
+  stripe_publishable_key: String
+}
+
+input StripeAccountUpdateManyMutationInput {
+  stripe_user_id: String
+  access_token: String
+  scope: String
+  livemode: Boolean
+  token_type: String
+  refresh_token: String
+  stripe_publishable_key: String
+}
+
+input StripeAccountUpdateOneInput {
+  create: StripeAccountCreateInput
+  update: StripeAccountUpdateDataInput
+  upsert: StripeAccountUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: StripeAccountWhereUniqueInput
+}
+
+input StripeAccountUpsertNestedInput {
+  update: StripeAccountUpdateDataInput!
+  create: StripeAccountCreateInput!
+}
+
+input StripeAccountWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  stripe_user_id: String
+  stripe_user_id_not: String
+  stripe_user_id_in: [String!]
+  stripe_user_id_not_in: [String!]
+  stripe_user_id_lt: String
+  stripe_user_id_lte: String
+  stripe_user_id_gt: String
+  stripe_user_id_gte: String
+  stripe_user_id_contains: String
+  stripe_user_id_not_contains: String
+  stripe_user_id_starts_with: String
+  stripe_user_id_not_starts_with: String
+  stripe_user_id_ends_with: String
+  stripe_user_id_not_ends_with: String
+  access_token: String
+  access_token_not: String
+  access_token_in: [String!]
+  access_token_not_in: [String!]
+  access_token_lt: String
+  access_token_lte: String
+  access_token_gt: String
+  access_token_gte: String
+  access_token_contains: String
+  access_token_not_contains: String
+  access_token_starts_with: String
+  access_token_not_starts_with: String
+  access_token_ends_with: String
+  access_token_not_ends_with: String
+  scope: String
+  scope_not: String
+  scope_in: [String!]
+  scope_not_in: [String!]
+  scope_lt: String
+  scope_lte: String
+  scope_gt: String
+  scope_gte: String
+  scope_contains: String
+  scope_not_contains: String
+  scope_starts_with: String
+  scope_not_starts_with: String
+  scope_ends_with: String
+  scope_not_ends_with: String
+  livemode: Boolean
+  livemode_not: Boolean
+  token_type: String
+  token_type_not: String
+  token_type_in: [String!]
+  token_type_not_in: [String!]
+  token_type_lt: String
+  token_type_lte: String
+  token_type_gt: String
+  token_type_gte: String
+  token_type_contains: String
+  token_type_not_contains: String
+  token_type_starts_with: String
+  token_type_not_starts_with: String
+  token_type_ends_with: String
+  token_type_not_ends_with: String
+  refresh_token: String
+  refresh_token_not: String
+  refresh_token_in: [String!]
+  refresh_token_not_in: [String!]
+  refresh_token_lt: String
+  refresh_token_lte: String
+  refresh_token_gt: String
+  refresh_token_gte: String
+  refresh_token_contains: String
+  refresh_token_not_contains: String
+  refresh_token_starts_with: String
+  refresh_token_not_starts_with: String
+  refresh_token_ends_with: String
+  refresh_token_not_ends_with: String
+  stripe_publishable_key: String
+  stripe_publishable_key_not: String
+  stripe_publishable_key_in: [String!]
+  stripe_publishable_key_not_in: [String!]
+  stripe_publishable_key_lt: String
+  stripe_publishable_key_lte: String
+  stripe_publishable_key_gt: String
+  stripe_publishable_key_gte: String
+  stripe_publishable_key_contains: String
+  stripe_publishable_key_not_contains: String
+  stripe_publishable_key_starts_with: String
+  stripe_publishable_key_not_starts_with: String
+  stripe_publishable_key_ends_with: String
+  stripe_publishable_key_not_ends_with: String
+  AND: [StripeAccountWhereInput!]
+}
+
+input StripeAccountWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  activity(where: ActivitySubscriptionWhereInput): ActivitySubscriptionPayload
+  availability(where: AvailabilitySubscriptionWhereInput): AvailabilitySubscriptionPayload
+  booking(where: BookingSubscriptionWhereInput): BookingSubscriptionPayload
+  businessHour(where: BusinessHourSubscriptionWhereInput): BusinessHourSubscriptionPayload
+  charge(where: ChargeSubscriptionWhereInput): ChargeSubscriptionPayload
+  content(where: ContentSubscriptionWhereInput): ContentSubscriptionPayload
+  customer(where: CustomerSubscriptionWhereInput): CustomerSubscriptionPayload
+  image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
+  lastLogin(where: LastLoginSubscriptionWhereInput): LastLoginSubscriptionPayload
+  session(where: SessionSubscriptionWhereInput): SessionSubscriptionPayload
+  sessionType(where: SessionTypeSubscriptionWhereInput): SessionTypeSubscriptionPayload
+  stripeAccount(where: StripeAccountSubscriptionWhereInput): StripeAccountSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type User {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean!
+  role: Role!
+  coaches(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  sessionTypes(where: SessionTypeWhereInput, orderBy: SessionTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SessionType!]
+  lastLogin: LastLogin
+  name: String!
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: Image
+  coverImage: Image
+  stripeAccount: StripeAccount
+  activities(where: ActivityWhereInput, orderBy: ActivityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Activity!]
+  customers(where: CustomerWhereInput, orderBy: CustomerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Customer!]
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  id: ID
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserCreateManyInput
+  sessionTypes: SessionTypeCreateManyWithoutCoachInput
+  lastLogin: LastLoginCreateOneInput
+  name: String!
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageCreateOneInput
+  coverImage: ImageCreateOneInput
+  stripeAccount: StripeAccountCreateOneInput
+  activities: ActivityCreateManyWithoutUserInput
+  customers: CustomerCreateManyWithoutCoachInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserCreateManyInput {
+  create: [UserCreateInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutActivitiesInput {
+  create: UserCreateWithoutActivitiesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutCustomersInput {
+  create: UserCreateWithoutCustomersInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutSessionTypesInput {
+  create: UserCreateWithoutSessionTypesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutActivitiesInput {
+  id: ID
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserCreateManyInput
+  sessionTypes: SessionTypeCreateManyWithoutCoachInput
+  lastLogin: LastLoginCreateOneInput
+  name: String!
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageCreateOneInput
+  coverImage: ImageCreateOneInput
+  stripeAccount: StripeAccountCreateOneInput
+  customers: CustomerCreateManyWithoutCoachInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserCreateWithoutCustomersInput {
+  id: ID
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserCreateManyInput
+  sessionTypes: SessionTypeCreateManyWithoutCoachInput
+  lastLogin: LastLoginCreateOneInput
+  name: String!
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageCreateOneInput
+  coverImage: ImageCreateOneInput
+  stripeAccount: StripeAccountCreateOneInput
+  activities: ActivityCreateManyWithoutUserInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserCreateWithoutSessionTypesInput {
+  id: ID
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserCreateManyInput
+  lastLogin: LastLoginCreateOneInput
+  name: String!
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageCreateOneInput
+  coverImage: ImageCreateOneInput
+  stripeAccount: StripeAccountCreateOneInput
+  activities: ActivityCreateManyWithoutUserInput
+  customers: CustomerCreateManyWithoutCoachInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  email_ASC
+  email_DESC
+  emailToken_ASC
+  emailToken_DESC
+  emailTokenExpiry_ASC
+  emailTokenExpiry_DESC
+  inviteToken_ASC
+  inviteToken_DESC
+  inviteTokenExpiry_ASC
+  inviteTokenExpiry_DESC
+  resetToken_ASC
+  resetToken_DESC
+  resetTokenExpiry_ASC
+  resetTokenExpiry_DESC
+  verified_ASC
+  verified_DESC
+  role_ASC
+  role_DESC
+  name_ASC
+  name_DESC
+  username_ASC
+  username_DESC
+  password_ASC
+  password_DESC
+  timezone_ASC
+  timezone_DESC
+  backgroundColor_ASC
+  backgroundColor_DESC
+  biography_ASC
+  biography_DESC
+  facebook_ASC
+  facebook_DESC
+  twitter_ASC
+  twitter_DESC
+  website_ASC
+  website_DESC
+  mobile_ASC
+  mobile_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  email: String!
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean!
+  role: Role!
+  name: String!
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  emailToken: String
+  emailToken_not: String
+  emailToken_in: [String!]
+  emailToken_not_in: [String!]
+  emailToken_lt: String
+  emailToken_lte: String
+  emailToken_gt: String
+  emailToken_gte: String
+  emailToken_contains: String
+  emailToken_not_contains: String
+  emailToken_starts_with: String
+  emailToken_not_starts_with: String
+  emailToken_ends_with: String
+  emailToken_not_ends_with: String
+  emailTokenExpiry: Float
+  emailTokenExpiry_not: Float
+  emailTokenExpiry_in: [Float!]
+  emailTokenExpiry_not_in: [Float!]
+  emailTokenExpiry_lt: Float
+  emailTokenExpiry_lte: Float
+  emailTokenExpiry_gt: Float
+  emailTokenExpiry_gte: Float
+  inviteToken: String
+  inviteToken_not: String
+  inviteToken_in: [String!]
+  inviteToken_not_in: [String!]
+  inviteToken_lt: String
+  inviteToken_lte: String
+  inviteToken_gt: String
+  inviteToken_gte: String
+  inviteToken_contains: String
+  inviteToken_not_contains: String
+  inviteToken_starts_with: String
+  inviteToken_not_starts_with: String
+  inviteToken_ends_with: String
+  inviteToken_not_ends_with: String
+  inviteTokenExpiry: Float
+  inviteTokenExpiry_not: Float
+  inviteTokenExpiry_in: [Float!]
+  inviteTokenExpiry_not_in: [Float!]
+  inviteTokenExpiry_lt: Float
+  inviteTokenExpiry_lte: Float
+  inviteTokenExpiry_gt: Float
+  inviteTokenExpiry_gte: Float
+  resetToken: String
+  resetToken_not: String
+  resetToken_in: [String!]
+  resetToken_not_in: [String!]
+  resetToken_lt: String
+  resetToken_lte: String
+  resetToken_gt: String
+  resetToken_gte: String
+  resetToken_contains: String
+  resetToken_not_contains: String
+  resetToken_starts_with: String
+  resetToken_not_starts_with: String
+  resetToken_ends_with: String
+  resetToken_not_ends_with: String
+  resetTokenExpiry: Float
+  resetTokenExpiry_not: Float
+  resetTokenExpiry_in: [Float!]
+  resetTokenExpiry_not_in: [Float!]
+  resetTokenExpiry_lt: Float
+  resetTokenExpiry_lte: Float
+  resetTokenExpiry_gt: Float
+  resetTokenExpiry_gte: Float
+  verified: Boolean
+  verified_not: Boolean
+  role: Role
+  role_not: Role
+  role_in: [Role!]
+  role_not_in: [Role!]
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  timezone: String
+  timezone_not: String
+  timezone_in: [String!]
+  timezone_not_in: [String!]
+  timezone_lt: String
+  timezone_lte: String
+  timezone_gt: String
+  timezone_gte: String
+  timezone_contains: String
+  timezone_not_contains: String
+  timezone_starts_with: String
+  timezone_not_starts_with: String
+  timezone_ends_with: String
+  timezone_not_ends_with: String
+  backgroundColor: String
+  backgroundColor_not: String
+  backgroundColor_in: [String!]
+  backgroundColor_not_in: [String!]
+  backgroundColor_lt: String
+  backgroundColor_lte: String
+  backgroundColor_gt: String
+  backgroundColor_gte: String
+  backgroundColor_contains: String
+  backgroundColor_not_contains: String
+  backgroundColor_starts_with: String
+  backgroundColor_not_starts_with: String
+  backgroundColor_ends_with: String
+  backgroundColor_not_ends_with: String
+  biography: String
+  biography_not: String
+  biography_in: [String!]
+  biography_not_in: [String!]
+  biography_lt: String
+  biography_lte: String
+  biography_gt: String
+  biography_gte: String
+  biography_contains: String
+  biography_not_contains: String
+  biography_starts_with: String
+  biography_not_starts_with: String
+  biography_ends_with: String
+  biography_not_ends_with: String
+  facebook: String
+  facebook_not: String
+  facebook_in: [String!]
+  facebook_not_in: [String!]
+  facebook_lt: String
+  facebook_lte: String
+  facebook_gt: String
+  facebook_gte: String
+  facebook_contains: String
+  facebook_not_contains: String
+  facebook_starts_with: String
+  facebook_not_starts_with: String
+  facebook_ends_with: String
+  facebook_not_ends_with: String
+  twitter: String
+  twitter_not: String
+  twitter_in: [String!]
+  twitter_not_in: [String!]
+  twitter_lt: String
+  twitter_lte: String
+  twitter_gt: String
+  twitter_gte: String
+  twitter_contains: String
+  twitter_not_contains: String
+  twitter_starts_with: String
+  twitter_not_starts_with: String
+  twitter_ends_with: String
+  twitter_not_ends_with: String
+  website: String
+  website_not: String
+  website_in: [String!]
+  website_not_in: [String!]
+  website_lt: String
+  website_lte: String
+  website_gt: String
+  website_gte: String
+  website_contains: String
+  website_not_contains: String
+  website_starts_with: String
+  website_not_starts_with: String
+  website_ends_with: String
+  website_not_ends_with: String
+  mobile: String
+  mobile_not: String
+  mobile_in: [String!]
+  mobile_not_in: [String!]
+  mobile_lt: String
+  mobile_lte: String
+  mobile_gt: String
+  mobile_gte: String
+  mobile_contains: String
+  mobile_not_contains: String
+  mobile_starts_with: String
+  mobile_not_starts_with: String
+  mobile_ends_with: String
+  mobile_not_ends_with: String
+  AND: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  NOT: [UserScalarWhereInput!]
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateDataInput {
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserUpdateManyInput
+  sessionTypes: SessionTypeUpdateManyWithoutCoachInput
+  lastLogin: LastLoginUpdateOneInput
+  name: String
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+  activities: ActivityUpdateManyWithoutUserInput
+  customers: CustomerUpdateManyWithoutCoachInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserUpdateInput {
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserUpdateManyInput
+  sessionTypes: SessionTypeUpdateManyWithoutCoachInput
+  lastLogin: LastLoginUpdateOneInput
+  name: String
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+  activities: ActivityUpdateManyWithoutUserInput
+  customers: CustomerUpdateManyWithoutCoachInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserUpdateManyDataInput {
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  name: String
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserUpdateManyInput {
+  create: [UserCreateInput!]
+  update: [UserUpdateWithWhereUniqueNestedInput!]
+  upsert: [UserUpsertWithWhereUniqueNestedInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+}
+
+input UserUpdateManyMutationInput {
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  name: String
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyDataInput!
+}
+
+input UserUpdateOneInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutCustomersInput {
+  create: UserCreateWithoutCustomersInput
+  update: UserUpdateWithoutCustomersDataInput
+  upsert: UserUpsertWithoutCustomersInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneWithoutActivitiesInput {
+  create: UserCreateWithoutActivitiesInput
+  update: UserUpdateWithoutActivitiesDataInput
+  upsert: UserUpsertWithoutActivitiesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneWithoutSessionTypesInput {
+  create: UserCreateWithoutSessionTypesInput
+  update: UserUpdateWithoutSessionTypesDataInput
+  upsert: UserUpsertWithoutSessionTypesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutActivitiesDataInput {
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserUpdateManyInput
+  sessionTypes: SessionTypeUpdateManyWithoutCoachInput
+  lastLogin: LastLoginUpdateOneInput
+  name: String
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+  customers: CustomerUpdateManyWithoutCoachInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserUpdateWithoutCustomersDataInput {
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserUpdateManyInput
+  sessionTypes: SessionTypeUpdateManyWithoutCoachInput
+  lastLogin: LastLoginUpdateOneInput
+  name: String
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+  activities: ActivityUpdateManyWithoutUserInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserUpdateWithoutSessionTypesDataInput {
+  email: String
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean
+  role: Role
+  coaches: UserUpdateManyInput
+  lastLogin: LastLoginUpdateOneInput
+  name: String
+  username: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: ImageUpdateOneInput
+  coverImage: ImageUpdateOneInput
+  stripeAccount: StripeAccountUpdateOneInput
+  activities: ActivityUpdateManyWithoutUserInput
+  customers: CustomerUpdateManyWithoutCoachInput
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+input UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateDataInput!
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserUpsertWithoutActivitiesInput {
+  update: UserUpdateWithoutActivitiesDataInput!
+  create: UserCreateWithoutActivitiesInput!
+}
+
+input UserUpsertWithoutCustomersInput {
+  update: UserUpdateWithoutCustomersDataInput!
+  create: UserCreateWithoutCustomersInput!
+}
+
+input UserUpsertWithoutSessionTypesInput {
+  update: UserUpdateWithoutSessionTypesDataInput!
+  create: UserCreateWithoutSessionTypesInput!
+}
+
+input UserUpsertWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  emailToken: String
+  emailToken_not: String
+  emailToken_in: [String!]
+  emailToken_not_in: [String!]
+  emailToken_lt: String
+  emailToken_lte: String
+  emailToken_gt: String
+  emailToken_gte: String
+  emailToken_contains: String
+  emailToken_not_contains: String
+  emailToken_starts_with: String
+  emailToken_not_starts_with: String
+  emailToken_ends_with: String
+  emailToken_not_ends_with: String
+  emailTokenExpiry: Float
+  emailTokenExpiry_not: Float
+  emailTokenExpiry_in: [Float!]
+  emailTokenExpiry_not_in: [Float!]
+  emailTokenExpiry_lt: Float
+  emailTokenExpiry_lte: Float
+  emailTokenExpiry_gt: Float
+  emailTokenExpiry_gte: Float
+  inviteToken: String
+  inviteToken_not: String
+  inviteToken_in: [String!]
+  inviteToken_not_in: [String!]
+  inviteToken_lt: String
+  inviteToken_lte: String
+  inviteToken_gt: String
+  inviteToken_gte: String
+  inviteToken_contains: String
+  inviteToken_not_contains: String
+  inviteToken_starts_with: String
+  inviteToken_not_starts_with: String
+  inviteToken_ends_with: String
+  inviteToken_not_ends_with: String
+  inviteTokenExpiry: Float
+  inviteTokenExpiry_not: Float
+  inviteTokenExpiry_in: [Float!]
+  inviteTokenExpiry_not_in: [Float!]
+  inviteTokenExpiry_lt: Float
+  inviteTokenExpiry_lte: Float
+  inviteTokenExpiry_gt: Float
+  inviteTokenExpiry_gte: Float
+  resetToken: String
+  resetToken_not: String
+  resetToken_in: [String!]
+  resetToken_not_in: [String!]
+  resetToken_lt: String
+  resetToken_lte: String
+  resetToken_gt: String
+  resetToken_gte: String
+  resetToken_contains: String
+  resetToken_not_contains: String
+  resetToken_starts_with: String
+  resetToken_not_starts_with: String
+  resetToken_ends_with: String
+  resetToken_not_ends_with: String
+  resetTokenExpiry: Float
+  resetTokenExpiry_not: Float
+  resetTokenExpiry_in: [Float!]
+  resetTokenExpiry_not_in: [Float!]
+  resetTokenExpiry_lt: Float
+  resetTokenExpiry_lte: Float
+  resetTokenExpiry_gt: Float
+  resetTokenExpiry_gte: Float
+  verified: Boolean
+  verified_not: Boolean
+  role: Role
+  role_not: Role
+  role_in: [Role!]
+  role_not_in: [Role!]
+  coaches_some: UserWhereInput
+  sessionTypes_some: SessionTypeWhereInput
+  lastLogin: LastLoginWhereInput
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  timezone: String
+  timezone_not: String
+  timezone_in: [String!]
+  timezone_not_in: [String!]
+  timezone_lt: String
+  timezone_lte: String
+  timezone_gt: String
+  timezone_gte: String
+  timezone_contains: String
+  timezone_not_contains: String
+  timezone_starts_with: String
+  timezone_not_starts_with: String
+  timezone_ends_with: String
+  timezone_not_ends_with: String
+  backgroundColor: String
+  backgroundColor_not: String
+  backgroundColor_in: [String!]
+  backgroundColor_not_in: [String!]
+  backgroundColor_lt: String
+  backgroundColor_lte: String
+  backgroundColor_gt: String
+  backgroundColor_gte: String
+  backgroundColor_contains: String
+  backgroundColor_not_contains: String
+  backgroundColor_starts_with: String
+  backgroundColor_not_starts_with: String
+  backgroundColor_ends_with: String
+  backgroundColor_not_ends_with: String
+  profileImage: ImageWhereInput
+  coverImage: ImageWhereInput
+  stripeAccount: StripeAccountWhereInput
+  activities_some: ActivityWhereInput
+  customers_some: CustomerWhereInput
+  biography: String
+  biography_not: String
+  biography_in: [String!]
+  biography_not_in: [String!]
+  biography_lt: String
+  biography_lte: String
+  biography_gt: String
+  biography_gte: String
+  biography_contains: String
+  biography_not_contains: String
+  biography_starts_with: String
+  biography_not_starts_with: String
+  biography_ends_with: String
+  biography_not_ends_with: String
+  facebook: String
+  facebook_not: String
+  facebook_in: [String!]
+  facebook_not_in: [String!]
+  facebook_lt: String
+  facebook_lte: String
+  facebook_gt: String
+  facebook_gte: String
+  facebook_contains: String
+  facebook_not_contains: String
+  facebook_starts_with: String
+  facebook_not_starts_with: String
+  facebook_ends_with: String
+  facebook_not_ends_with: String
+  twitter: String
+  twitter_not: String
+  twitter_in: [String!]
+  twitter_not_in: [String!]
+  twitter_lt: String
+  twitter_lte: String
+  twitter_gt: String
+  twitter_gte: String
+  twitter_contains: String
+  twitter_not_contains: String
+  twitter_starts_with: String
+  twitter_not_starts_with: String
+  twitter_ends_with: String
+  twitter_not_ends_with: String
+  website: String
+  website_not: String
+  website_in: [String!]
+  website_not_in: [String!]
+  website_lt: String
+  website_lte: String
+  website_gt: String
+  website_gte: String
+  website_contains: String
+  website_not_contains: String
+  website_starts_with: String
+  website_not_starts_with: String
+  website_ends_with: String
+  website_not_ends_with: String
+  mobile: String
+  mobile_not: String
+  mobile_in: [String!]
+  mobile_not_in: [String!]
+  mobile_lt: String
+  mobile_lte: String
+  mobile_gt: String
+  mobile_gte: String
+  mobile_contains: String
+  mobile_not_contains: String
+  mobile_starts_with: String
+  mobile_not_starts_with: String
+  mobile_ends_with: String
+  mobile_not_ends_with: String
+  AND: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+  username: String
+}

@@ -1,0 +1,20 @@
+.admin-panel-layout {
+  .ant-layout-content {
+    width: calc(100% - 128px);
+    margin: 24px 24px 24px 104px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .admin-panel-layout {
+    .ant-layout-content {
+      width: auto;
+      margin: 24px;
+    }
+  }
+  .ant-form-item .ant-form-item-required {
+    &::before {
+      right: 0 !important;
+    }
+  }
+}

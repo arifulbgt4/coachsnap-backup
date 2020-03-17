@@ -1,0 +1,45 @@
+type User {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  email: String! @unique
+  emailToken: String
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean! @default(value: false)
+  role: Role! @default(value: COACH)
+  coaches: [User] @relation(onDelete: SET_NULL) # Only exists when User.type is 'client'
+  sessionTypes: [SessionType!] # Only for COACH for part 1
+  lastLogin: LastLogin @relation(onDelete: CASCADE)
+  name: String!
+  username: String @unique
+  password: String
+  timezone: String @default(value: "America/New_York")
+  backgroundColor: String
+  profileImage: Image @relation(name: "ProfileImage", onDelete: CASCADE)
+  coverImage: Image @relation(name: "CoverImage", onDelete: CASCADE)
+  stripeAccount: StripeAccount @relation(onDelete: CASCADE)
+  activities: [Activity!]! @relation(onDelete: SET_NULL)
+  # pendingNewsletter: [String!]
+  customers: [Customer] @relation(onDelete: SET_NULL)
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+type LastLogin {
+  id: ID! @id
+  date: DateTime! @updatedAt #maybe it should be "createdAt" instead (check later)
+  action: String!
+}
+
+enum Role {
+  ADMIN
+  COACH
+  CUSTOMER
+}

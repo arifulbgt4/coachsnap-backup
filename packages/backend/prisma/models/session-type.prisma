@@ -1,0 +1,13 @@
+type SessionType {
+  id: ID! @id @unique
+  coach: User
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  name: String!
+  description: String
+  duration: Int! @default(value: 15)
+  maxSeats: Int! @default(value: 1)
+  cost: Int!
+  sessions: [Session!] @relation(onDelete: CASCADE)
+}
+

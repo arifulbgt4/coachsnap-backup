@@ -1,0 +1,5 @@
+alias coachsnap="ENV_FILE=.env docker-compose -f docker-compose.dev.yml"
+alias coachsnap-up="coachsnap up --build -d"
+alias coachsnap-logs="coachsnap logs -f"
+alias coachsnap-frc="coachsnap-up --force-recreate"
+alias coachsnap-frc-nd="coachsnap-frc --no-deps"

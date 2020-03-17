@@ -1,0 +1,36 @@
+.session-customer {
+  display: block;
+  padding: 25px;
+  .se-header {
+    position: relative;
+    display: block;
+    padding: 0 0 15px;
+    border-bottom: 1px solid #f1f1f1;
+    h4 {
+      margin: 0;
+      line-height: 30px;
+    }
+    .add-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  .ant-list-items {
+    .ant-list-item {
+      transition: all 0.3s ease;
+
+      .ant-list-item-meta {
+        .ant-list-item-meta-content {
+          align-self: center;
+          h4 {
+            margin: 0;
+          }
+        }
+      }
+      &:hover {
+        background: #f8f8f8;
+      }
+    }
+  }
+}

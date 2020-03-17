@@ -1,0 +1,12 @@
+type Activity {
+  id: ID! @id
+  user: User
+  createdAt: DateTime! @createdAt
+  content: Content @relation(onDelete: CASCADE)
+}
+
+type Content {
+  id: ID! @id
+  type: String
+  message: String
+}

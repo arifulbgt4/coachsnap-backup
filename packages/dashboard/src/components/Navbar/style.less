@@ -1,0 +1,65 @@
+.public-page-header {
+  height: 64px;
+  line-height: 64px;
+  background: #fff;
+  padding: 0 24px;
+  .logo-public {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    text-transform: uppercase;
+    span {
+      color: #1890ff;
+    }
+  }
+  .user-inter {
+    text-align: right;
+    a {
+      display: inline-block;
+      color: #333;
+      font-size: 16px;
+      margin: 0 5px;
+      height: 35px;
+      line-height: 35px;
+      border-radius: 3px;
+      padding: 0 10px;
+      background: transparent;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      @media only screen and (max-width: 375px) {
+        padding: 0 8px;
+        margin: 0;
+      }
+      &.sign-up-button {
+        line-height: 33px;
+        padding: 0 15px;
+        border: 1px solid #1890ff;
+        @media only screen and (max-width: 375px) {
+          padding: 0 10px;
+        }
+        &:hover {
+          background: #1890ff;
+          color: #fff;
+        }
+      }
+      &.go-coach-panel {
+        line-height: 33px;
+        padding: 0 10px 0 15px;
+        border: 1px solid #1890ff;
+        i {
+          padding-left: 5px;
+        }
+        &:hover {
+          background: #1890ff;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .logo-public {
+    font-size: 15px !important;
+  }
+}

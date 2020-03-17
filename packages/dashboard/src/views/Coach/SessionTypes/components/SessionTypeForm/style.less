@@ -1,0 +1,33 @@
+.session-type-form {
+  .ant-form-item {
+    label {
+      position: relative;
+      padding-right: 15px;
+    }
+    .ant-form-item-required {
+      &::before {
+        position: absolute;
+        right: 8px;
+        top: 1px;
+      }
+    }
+  }
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .session-type-form {
+    .ant-form-item-required {
+      padding-right: 24px !important;
+    }
+  }
+}
+@media only screen and (max-width: 575px) {
+  .session-type-form {
+    .ant-form-item-required {
+      padding-right: 15px !important;
+    }
+  }
+}

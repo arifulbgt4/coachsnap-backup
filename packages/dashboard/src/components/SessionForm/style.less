@@ -1,0 +1,140 @@
+.ant-calendar-picker {
+  width: 100%;
+}
+.ant-time-picker {
+  width: 100% !important;
+}
+.session-form {
+  .ant-upload-select-picture-card {
+    width: 100% !important;
+  }
+  .ant-form-item {
+    label {
+      position: relative;
+      padding-right: 15px;
+    }
+    .ant-form-item-required {
+      &::before {
+        position: absolute;
+        right: 8px;
+        top: 1px;
+      }
+    }
+  }
+  .minimize-require {
+    .ant-form-explain {
+      display: none;
+    }
+    .ant-row {
+      .ant-form-explain {
+        display: inherit;
+      }
+    }
+    label {
+      &::before {
+        content: '*';
+        display: inline-block;
+        margin-right: 4px;
+        color: #f5222d;
+        font-size: 14px;
+        font-family: SimSun, sans-serif;
+        line-height: 1;
+
+        position: absolute;
+        right: 8px;
+        top: 1px;
+      }
+    }
+  }
+  .session-form-btn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #e8e8e8;
+    padding: 10px 16px;
+    text-align: right;
+    left: 0;
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+    z-index: 999;
+    button {
+      @media only screen and (max-width: 575px) {
+        margin: 3px;
+      }
+    }
+  }
+}
+
+.create-new-session {
+  .create {
+    display: block;
+  }
+}
+.up-image-area {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  span {
+    display: block !important;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .delete-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    transform: translate(-50%, -50%) scale(0.8, 0.8);
+    opacity: 0;
+    transition: all 0.1s ease;
+  }
+  i {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 9;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    .delete-image {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1, 1);
+    }
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .session-form {
+    .ant-form-item-required {
+      padding-right: 24px !important;
+    }
+  }
+}
+@media only screen and (max-width: 575px) {
+  .session-form {
+    .ant-form-item-required {
+      padding-right: 15px !important;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+name: DEPLOY-staging
+# TODO:
+# 4. build for Prod (master)
+
+on:
+  push:
+    branches:
+      - github-actions-staging # TODO: change later to `develop`
+env: # workflow scopped
+  ## Secrets
+  # Environment
+  # The syntax `INPUT_ENVKEY_xxx` is needed for SpicyPizza/create-envfile@v1 action
+  INPUT_ENVKEY_NODE_ENV: ${{ secrets.STAGING_NODE_ENV_DEV }}
+  # Admin
+  INPUT_ENVKEY_ADMIN_EMAIL: ${{ secrets.STAGING_ADMIN_EMAIL }}
+  INPUT_ENVKEY_ADMIN_PASSWORD: ${{ secrets.STAGING_ADMIN_PASSWORD }}
+  # Backend
+  INPUT_ENVKEY_API_PORT: ${{ secrets.STAGING_API_PORT }}
+  INPUT_ENVKEY_APP_SECRET: ${{ secrets.STAGING_APP_SECRET }}
+  INPUT_ENVKEY_DASHBOARD_URL: ${{ secrets.STAGING_DASHBOARD_URL }}
+  ## Cloudinary
+  INPUT_ENVKEY_CLOUD_NAME: ${{ secrets.STAGING_CLOUD_NAME }}
+  INPUT_ENVKEY_API_KEY: ${{ secrets.STAGING_API_KEY }}
+  INPUT_ENVKEY_API_SECRET: ${{ secrets.STAGING_API_SECRET }}
+  # Mail
+  INPUT_ENVKEY_MAIL_HOST: ${{ secrets.STAGING_MAIL_HOST }}
+  INPUT_ENVKEY_MAIL_PASS: ${{ secrets.STAGING_MAIL_PASS }}
+  INPUT_ENVKEY_MAIL_PORT: ${{ secrets.STAGING_MAIL_PORT }}
+  INPUT_ENVKEY_MAIL_USER: ${{ secrets.STAGING_MAIL_USER }}
+  INPUT_ENVKEY_MESSANGER_MAIL: ${{ secrets.STAGING_MESSANGER_MAIL }}
+  # MYSQL
+  INPUT_ENVKEY_MYSQL_PASS: ${{ secrets.STAGING_MYSQL_PASS }}
+  INPUT_ENVKEY_MYSQL_USER: ${{ secrets.STAGING_MYSQL_USER }}
+  # Prisma
+  INPUT_ENVKEY_PRISMA_ENDPOINT: ${{ secrets.STAGING_PRISMA_ENDPOINT }}
+  INPUT_ENVKEY_PRISMA_MANAGEMENT_API_SECRET: ${{ secrets.STAGING_PRISMA_MANAGEMENT_API_SECRET }}
+  INPUT_ENVKEY_PRISMA_SECRET: ${{ secrets.STAGING_PRISMA_SECRET }}
+  # API URLs
+  INPUT_ENVKEY_REACT_BACKEND_DEV_API: ${{ secrets.STAGING_REACT_BACKEND_DEV_API }}
+  INPUT_ENVKEY_REACT_BACKEND_PROD_API: ${{ secrets.STAGING_REACT_BACKEND_PROD_API }}
+  # Stripe
+  INPUT_ENVKEY_STRIPE_CLIENT_ID: ${{ secrets.STAGING_STRIPE_CLIENT_ID }}
+  INPUT_ENVKEY_STRIPE_PUBLIC_KEY: ${{ secrets.STAGING_STRIPE_PUBLIC_KEY }}
+  INPUT_ENVKEY_STRIPE_SECRET_KEY: ${{ secrets.STAGING_STRIPE_SECRET_KEY }}
+  ## Alias
+  # TODO: use these aliases instead of verbose commands at the bottom
+  # COACHSNAP_UP: 'ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d'
+  # COACHSNAP_LOGS: 'ENV_FILE=.env docker-compose -f docker-compose.dev.yml logs -f'
+  # COACHSNAP_FRC: 'ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d --force-recreate'
+  # COACHSNAP_FRC_ND: 'ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d --force-recreate --no-deps'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04 # Don't use "latest" version to avoid unexpected breaking changes
+
+    steps:
+      - uses: actions/checkout@v2 # TODO: lower priority - might upgrade to v2 (check changelog first)
+      - name: Bootstrap app on Ubuntu
+        uses: actions/setup-node@v1 # an action that checks out your repository to $GITHUB_WORKSPACE in the virtual environment.
+        with:
+          node-version: 12 # to avoid unexpected behavior with future latest node upgrades
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+            ${{ runner.os }}-yarn-
+
+      - name: Install global packages
+        run: |
+          npm i -g yarn dotenv-cli lerna prisma maildev
+          # yarn bootstrap
+      # Create env file using Github Action package
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          file_name: .env
+          envkey_ENV_FILE: '.env'
+
+      # # TODO: Remove this step after finishing debugging
+      # - name: check environment and files
+      #   run: |
+      #     echo "Current directory"
+      #     pwd
+      #     echo "Folders and files"
+      #     ls -a
+      #     cat .env
+
+      #  TODO: Add BDD tests
+      # NB: don't know why Github masks "test" in the next line. It shows as "***"
+      - name: Run test
+        run: |
+          echo ">>>> Fake tests that should pass"
+          # (maildev --incoming-user=test --incoming-pass=test &) && (docker-compose -f docker-compose.win.test.yml up --build &) && (dotenv -e .env yarn run deploy:backend &) && (dotenv -e .env yarn run test:backend &)
+          # docker ps
+          # maildev --incoming-user=test --incoming-pass=test &
+          # ENV_FILE=.env docker-compose -f docker-compose.win.test.yml up --build -d mysql
+          # ENV_FILE=.env docker-compose -f docker-compose.win.test.yml up --build -d prisma
+          # dotenv -e .env yarn run deploy:backend
+          # dotenv -e .env yarn run test:backend
+
+      # Uses external Github Action to login to server using SSH
+      - name: Run services
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.STAGING_SERVER_HOST }}
+          username: ${{ secrets.STAGING_SERVER_USERNAME }}
+          password: ${{ secrets.STAGING_SERVER_PASSWORD }}
+          script: |
+            echo ">>> Show running docker processes are before stopping them"
+            docker ps
+
+            echo ">>> Stop Docker processes"
+            ids=$(docker ps -a -q)
+            for id in $ids
+            do
+              echo "$id"
+              docker stop $id && docker rm $id
+            done
+
+            echo ">>> Show running docker processes after stopping everything"
+            docker ps
+
+            echo ">>> Go to project folder"
+            cd coachsnap
+
+            #TODO: (sleep for each step, check with Taher)
+            echo ">>> Run alias baseImage"
+            ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d baseImage
+            echo ">>> Run alias MYSQL"
+            ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d mysql
+            echo ">>> Run alias Prisma"
+            ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d prisma
+            echo ">>> Run alias backend"
+            ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d backend
+            echo ">>> Run alias dashboard"
+            ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d dashboard
+            echo ">>> Run alias nginx"
+            ENV_FILE=.env docker-compose -f docker-compose.dev.yml up --build -d nginx
+
+            echo ">>> Docker processes running are.."
+            docker ps

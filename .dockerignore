@@ -1,0 +1,17 @@
+node_modules/*
+packages/*/node_modules/*
+packages/*/build/*
+
+deploy
+persistance
+
+dist
+.cache
+node_modules
+build
+
+# FIX: manually exclude all extension on server for now
+packages/extension*
+.jscpd
+
+build-cache

@@ -1,0 +1,130 @@
+.booking-session-sidebar {
+  .confirm-text {
+    text-align: center;
+    strong {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    p {
+      display: block;
+      margin: 0 0 15px;
+      padding: 0 0 15px;
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  .contents {
+    display: block;
+    margin-top: 10px;
+    .ant-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      margin: 0 0 15px;
+      .ant-avatar-string {
+        position: relative;
+        transform: translate(0) !important;
+        left: 0;
+        span {
+          display: block !important;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+      }
+    }
+    &.confirm {
+      padding: 0 40px;
+    }
+    strong {
+      display: block;
+      margin: 0 0 5px;
+    }
+    ul {
+      padding: 0;
+      li {
+        list-style: none;
+        display: flex;
+        margin: 0 0 10px;
+        i {
+          margin-right: 5px;
+        }
+        span {
+          display: block;
+          width: 100%;
+          margin-top: -4px;
+        }
+        &:nth-child(3) {
+          span {
+            color: #1fc8a6;
+          }
+        }
+      }
+    }
+  }
+  .ant-card-cover {
+    height: 260px;
+    overflow: hidden;
+    vertical-align: middle;
+    span {
+      display: block !important;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    @media only screen and (max-width: 991px) {
+      max-height: 260px;
+    }
+  }
+}
+@media only screen and (max-width: 991px) {
+  .booking-session-sidebar {
+    .contents {
+      text-align: center;
+      .ant-avatar {
+        margin: 0 0 15px;
+      }
+      ul {
+        li {
+          display: block !important;
+          i {
+            display: inline-block;
+          }
+          span {
+            width: auto !important;
+            display: inline-block !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .session-time {
+    i {
+      margin-left: 5%;
+      position: absolute;
+    }
+    span {
+      margin-left: 10%;
+    }
+  }
+}
+
+.booking-page-profile {
+  span {
+    transform: scale(1) translateX(-50%) !important;
+  }
+}

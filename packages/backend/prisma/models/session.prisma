@@ -1,0 +1,32 @@
+type Session {
+  id: ID! @id @unique
+  coach: User
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  sessionType: SessionType
+  name: String!
+  description: String
+  location: String!
+  link: String
+  recurring: Boolean
+  availability: Availability! @relation(onDelete: CASCADE)
+  maxSeats: Int! @default(value: 1)
+  singleEvent: Boolean @default(value: false)
+  businessHour: BusinessHour @relation(onDelete: CASCADE)
+  duration: Int!
+  bookings: [Booking!] @relation(onDelete: CASCADE)
+  coverImage: Image @relation(name: "SessionCoverImage", onDelete: CASCADE)
+  cost: Int
+}
+
+type Availability {
+  id: ID! @id
+  start: DateTime!
+  end: DateTime!
+}
+
+type BusinessHour {
+  id: ID! @id
+  start: String
+  end: String
+}

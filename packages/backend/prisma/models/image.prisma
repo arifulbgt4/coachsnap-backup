@@ -1,0 +1,6 @@
+type Image {
+  id: ID! @id
+  url: String!
+  width: Int!
+  height: Int!
+}

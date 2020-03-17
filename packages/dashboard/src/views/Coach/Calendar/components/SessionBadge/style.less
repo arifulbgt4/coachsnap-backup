@@ -1,0 +1,82 @@
+.session-badge {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  font-size: 15px;
+  width: 100%;
+  margin: 2px auto;
+  padding: 5px 10px;
+  text-align: left;
+  border-radius: 0;
+  border-width: 1px 1px 1px 3px;
+  border-style: solid;
+  min-height: 70px !important;
+  top: 0 !important;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0px rgba(10, 14, 29, 0.04),
+    0px 8px 30px 0px rgba(10, 14, 29, 0.08);
+  h4 {
+    margin: 0;
+    position: absolute;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  span {
+    position: absolute;
+    margin-top: 18px;
+  }
+  p {
+    position: absolute;
+    margin: 0;
+    margin-top: 40px;
+    font-size: 12px;
+  }
+}
+.weekly-badge {
+  position: absolute;
+  font-size: 13px;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  border-radius: 0;
+  border-width: 1px 1px 1px 3px;
+  border-style: solid;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-color: #1890ff;
+  background: #333;
+  padding: 0 8px;
+  left: 0;
+  right: 0;
+  h4 {
+    position: relative;
+    white-space: nowrap;
+    margin: 0;
+    line-height: 17px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: capitalize;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  span {
+    color: #ffffffab;
+  }
+  p {
+    display: none;
+  }
+}
+.disabled {
+  .weekly-badge {
+    pointer-events: none;
+    right: 0;
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+}

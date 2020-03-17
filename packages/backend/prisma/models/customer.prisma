@@ -1,0 +1,20 @@
+type Customer {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  coach: User! @relation(onDelete: SET_NULL)
+  role: Role! @default(value: CUSTOMER)
+  email: String!
+  emailToken: String @unique
+  emailTokenExpiry: Float
+  inviteToken: String
+  inviteTokenExpiry: Float
+  resetToken: String
+  resetTokenExpiry: Float
+  verified: Boolean! @default(value: false)
+  name: String!
+  password: String
+  profileImage: Image @relation(name: "ProfileImageOfCustomer", onDelete: CASCADE)
+  coverImage: Image @relation(name: "CoverImageOfCustomer", onDelete: CASCADE)
+  stripeAccount: StripeAccount @relation(onDelete: CASCADE)
+}

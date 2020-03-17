@@ -1,0 +1,26 @@
+.calendar-page {
+  text-align: center;
+  white-space: nowrap;
+  .ant-card-head-wrapper {
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+    .ant-card-extra {
+      right: 25px;
+      position: absolute;
+      @media only screen and (max-width: 768px) {
+        position: relative;
+        margin-right: auto;
+        right: 0;
+        margin-top: -20px;
+      }
+    }
+  }
+  .body-box {
+    overflow: hidden;
+  }
+  .ps__rail-x,
+  .ps__rail-y {
+    z-index: 999;
+  }
+}

@@ -1,0 +1,45 @@
+.sign-in-page {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+  .sign-in-card {
+    position: relative;
+    z-index: 999;
+    margin-top: 60px;
+    padding: 0 10px;
+    text-align: center;
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #111;
+      font-weight: 600;
+    }
+    .ant-avatar {
+      margin-bottom: 1.5rem;
+    }
+    p {
+      margin-top: 1.5rem;
+      font-size: 13px;
+      color: #6c757d;
+    }
+    form {
+      fieldset {
+        margin: 0 0 1rem;
+        &:nth-child(3) {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.color {
+  &__gray-light svg {
+    color: rgba(0, 0, 0, 0.25);
+  }
+}

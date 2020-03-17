@@ -1,0 +1,3 @@
+const SET_TRANSACTIONS = 'SET_TRANSACTIONS';
+
+export default { SET_TRANSACTIONS };

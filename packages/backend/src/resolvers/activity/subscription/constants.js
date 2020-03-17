@@ -1,0 +1,3 @@
+const ACTIVITY_UPDATED = 'ACTIVITY_UPDATED';
+
+module.exports = { ACTIVITY_UPDATED };

@@ -1,0 +1,31 @@
+.week-days-name {
+  display: flex;
+  flex: 1;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 0;
+  padding: 0;
+  &.weeklyview {
+    padding-left: 64px;
+    li {
+      span{
+        font-size: 13px;
+      }
+      &:first-child {
+        border-color: #e8e8e8;
+      }
+    }
+  }
+  li {
+    list-style: none;
+    width: 100%;
+    line-height: 30px;
+    border-left: 1px solid #e8e8e8;
+    margin-left: -1px;
+    span {
+      text-transform: uppercase;
+    }
+    &:first-child {
+      border-color: transparent;
+    }
+  }
+}

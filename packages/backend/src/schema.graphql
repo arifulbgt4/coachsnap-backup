@@ -1,0 +1,213 @@
+#import * from "./generated/prisma.graphql"
+scalar Upload
+scalar ActivityData
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type CustomerAuthPayload {
+  token: String!
+  customer: Customer!
+}
+
+type CustomerList {
+  count: Int!
+  customers: [Customer]!
+}
+
+type CoachList {
+  count: Int!
+  coaches: [User]!
+}
+
+type SessionsList {
+  count: Int!
+  coach: User!
+  sessions: [Session!]!
+}
+
+type BookingList {
+  count: Int!
+  bookings: [Booking!]!
+}
+
+type SessionTypesList {
+  count: Int!
+  sessionTypes: [SessionType!]!
+}
+
+type ChargeList {
+  count: Int!
+  charges: [Charge!]!
+}
+
+type StripeClient {
+  id: String!
+  publicKey: String!
+}
+
+type Summary {
+  totalBookings: Int!,
+  totalEarning: Float!,
+  last30DaysEarning: Float!,
+  totalRefund: Float!,
+}
+
+input UserSettingsInput {
+  name: String
+  username: String
+  email: String
+  password: String
+  timezone: String
+  backgroundColor: String
+  profileImage: Upload
+  coverImage: Upload
+  biography: String
+  facebook: String
+  twitter: String
+  website: String
+  mobile: String
+}
+
+type Message {
+  message: String
+}
+
+type Query {
+  user(id: ID!): AuthPayload!
+  customer(id: ID!): CustomerAuthPayload!
+  coach(username: String, id: ID): User!
+  customers: CustomerList!
+  coaches: CoachList!
+  # Activities
+  activities(orderBy: ActivityOrderByInput, skip: Int, first: Int, where: ActivityWhereInput): [Activity!]!
+  # Sessions
+  session(id: ID!): Session!
+  sessions(sessionTypeId: ID!): SessionsList!
+  getCoachSessions(orderBy: SessionOrderByInput, skip: Int, first: Int, where: SessionWhereInput!): SessionsList!
+  # Session Types
+  sessionType(id: ID!): SessionType
+  sessionTypes(coachId: ID!): SessionTypesList!
+  getBookedTimes(coachId: String!) : [BusinessHour!]!
+  availableTimes(
+    start: String
+    end: String
+    sessionId: ID
+    coachId: ID
+    date: DateTime!
+    blockSize: Int
+    ignoreSessionId: ID
+  ): [[String!]!]!
+  # Booking
+  booking(id: ID!): Booking!
+  bookingsByCustomer(customerId: ID!, username: String): BookingList!
+  bookingsBySession(sessionId: ID!): BookingList!
+
+  # Payment
+  stripeClient: StripeClient!
+  coachPayments(orderBy: ChargeOrderByInput, skip: Int, first: Int, where: ChargeWhereInput): ChargeList!
+  adminPayments(orderBy: ChargeOrderByInput, skip: Int, first: Int, where: ChargeWhereInput): ChargeList!
+  coachSummary(coachId: ID): Summary!
+
+  # Admin
+  bookingsByCoach(coachId: ID!): BookingList!
+  customersOfCoach(coachId: ID!): CustomerList!
+  coachActivities(coachId: ID!): [Activity!]!
+  adminSummary: Summary!
+}
+
+type Mutation {
+  # User
+  signup(
+    email: String!
+    password: String!
+    name: String!
+    username: String
+    timezone: String
+  ): String!
+  signupAsCustomer(email: String!, password: String!, name:String!, username: String!):String!
+  signin(email: String!, password: String!, lastLogin: LastLoginCreateOneInput): AuthPayload!
+  signinAsCustomer(email: String!, password:String!, username: String!): CustomerAuthPayload!
+
+  verifyEmail(emailToken: String!, email: String): AuthPayload!
+  verifyCustomerEmail(emailToken: String!, email: String): CustomerAuthPayload!
+
+  sendVerification(email:String): String!
+  sendVerifivationToCustomer(email:String): String!
+  requestReset(email: String!): Message
+  resetPassword(
+    resetToken: String!
+    password: String!
+    confirmPassword: String!
+  ): Message!
+ requestCustomerReset(email: String!, username: String!): Message
+ resetCustomerPassword(resetToken: String! password:String! confirmPassword: String):Message!
+
+  # Admin
+  createCoach(email:String!, name:String!): User!
+  resetCoachAccount(inviteToken: String!, email: String!, username: String!, password: String!): User!
+  verifyInvitationToken(inviteToken: String!): String!
+  deleteCoach(id:ID!): User!
+  updateCoach(coachId: ID!, data: UserSettingsInput): User!
+  # Coach
+  updateCoachByCoach(data: UserSettingsInput): AuthPayload!
+  deleteCoachImage(type: String): AuthPayload!
+  createCustomer(email:String!, name:String!): Customer!
+  updateCustomer(customerId: ID!, email: String, password: String, name: String): Customer!
+
+  removeCustomer(customerId: ID!): Customer!
+
+  # Customer
+  verifyCustomerInvitationToken(inviteToken: String!, username: String!): String!
+  resetCustomerAccount(inviteToken: String!, email: String!, password: String!, username: String!): CustomerAuthPayload!
+
+  # Session
+  createSession(data: SessionCreateInput!, coverImage: Upload, sessionTypeId: ID!): Session!
+  updateSession(id: ID!, data: SessionUpdateInput!, coverImage: Upload): Session
+  deleteSessionImage(id: ID!): Session
+  deleteSession(id: ID!): Session
+
+  # Session Type
+  createSessionType(data: SessionTypeCreateInput): SessionType!
+  updateSessionType(id: ID!, data: SessionTypeUpdateInput!): SessionType!
+  deleteSessionType(id: ID!): SessionType!
+
+  # Booking
+  createBooking(
+    sessionId: ID!
+    token: String
+    timeSlot: String
+    customerId: ID
+    userData: UserCreateInput
+  ): Booking
+
+  createBookingByCustomer(
+    sessionId: ID!
+    token: String
+    timeSlot: String
+    customerId: ID
+    userData: UserCreateInput
+  ): Booking
+
+  updateBooking(data: BookingUpdateInput!, id: ID!): Booking
+  removeAttendee(customerId: ID!, sessionId: ID!): Booking
+  sendRemainder(id: ID!): Message
+
+  # Stripe
+  connectStripe(code: String!): AuthPayload!
+  disconnectStripe: AuthPayload!
+  refund(chargeId: String!): Charge!
+}
+
+type ActivityPubSub {
+  activity: Activity
+  mutation: String
+  type: String
+  data: ActivityData
+}
+
+type Subscription {
+  activityPubSub(coachId: ID): ActivityPubSub
+}

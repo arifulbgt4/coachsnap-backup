@@ -1,0 +1,24 @@
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel:
+  - models/image.prisma
+  - models/stripe.prisma
+  - models/user.prisma
+  - models/customer.prisma
+  - models/activity.prisma
+  - models/session.prisma
+  - models/booking.prisma
+  - models/session-type.prisma
+  - models/charge.prisma
+databaseType: document
+secret: ${env:PRISMA_SECRET}
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client/
+  - generator: graphql-schema
+    output: ../src/generated/prisma.graphql
+seed:
+  run: node prisma/seed/index.js
+hooks:
+  post-deploy:
+    - prisma generate
+    - prisma seed

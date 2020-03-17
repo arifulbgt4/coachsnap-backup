@@ -1,0 +1,61 @@
+.date-col-hourly {
+  width: 100%;
+  text-align: center;
+  min-height: 80px;
+  border-left: 1px solid #ddd;
+  margin: -1px 0 0 -1px;
+  padding: 0;
+  position: relative;
+  z-index: 999;
+
+  .hourly-body {
+    .in-calendar-block {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+      li {
+        display: block;
+        border-top: 1px solid #eeeeee;
+        height: 20px;
+        &.time-block {
+          cursor: pointer;
+          span {
+            text-align: right;
+            font-size: 10px;
+            padding-right: 10px;
+            display: block;
+            line-height: 16px;
+          }
+          &:hover {
+            background: rgba(33, 150, 243, 0.1);
+          }
+        }
+        &.border-item {
+          border-top: 1px solid #ddd;
+        }
+      }
+    }
+  }
+  &.selected {
+    border: 1px solid #1a8fff;
+    cursor: pointer;
+    pointer-events: painted;
+    position: relative;
+    z-index: 99;
+    .bg {
+      opacity: 0.1;
+      transition: 0.3s ease-in;
+    }
+  }
+  &.today {
+    .bg {
+      opacity: 0.1;
+      transition: 0.3s ease-in;
+    }
+  }
+  &.disabled {
+    color: #ccc;
+    pointer-events: none;
+  }
+}

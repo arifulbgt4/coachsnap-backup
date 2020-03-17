@@ -1,0 +1,52 @@
+.date-col {
+  width: 100%;
+  text-align: center;
+  min-height: 80px;
+  border: 1px solid #ddd;
+  margin: -1px 0 0 -1px;
+  padding: 25px 5px 5px;
+  position: relative;
+  z-index: 999;
+  pointer-events: pointer;
+  .number {
+    position: absolute;
+    font-size: 82.5%;
+    line-height: 1;
+    top: 0.75em;
+    right: 0.75em;
+    font-weight: 600;
+  }
+  .bg {
+    font-weight: 700;
+    line-height: 1;
+    color: #1a8fff;
+    opacity: 0;
+    font-size: 4em;
+    position: absolute;
+    top: -0.05em;
+    right: -0.05em;
+    transition: 0.2s ease-out;
+    letter-spacing: -0.07em;
+  }
+  &.selected {
+    border: 1px solid #1a8fff;
+    cursor: pointer;
+    pointer-events: painted;
+    position: relative;
+    z-index: 99;
+    .bg {
+      opacity: 0.1;
+      transition: 0.3s ease-in;
+    }
+  }
+  &.today {
+    .bg {
+      opacity: 0.1;
+      transition: 0.3s ease-in;
+    }
+  }
+  &.disabled {
+    color: #ccc;
+    pointer-events: none;
+  }
+}

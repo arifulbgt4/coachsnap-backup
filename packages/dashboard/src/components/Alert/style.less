@@ -1,0 +1,44 @@
+.alert-box {
+  position: relative;
+  font-size: 15px;
+  width: 100%;
+  margin: 0px auto 40px auto;
+  padding: 14px 16px;
+  text-align: left;
+  border-radius: 0;
+  border-width: 0 0 0 3px;
+  border-style: solid;
+  background: #fff;
+  box-shadow: 0 8px 16px 0px rgba(10, 14, 29, 0.04),
+    0px 8px 64px 0px rgba(10, 14, 29, 0.08);
+
+  a {
+    font-weight: 600;
+    margin-left: 5px;
+    color: #333;
+    text-decoration: underline;
+    font-size: 13px;
+  }
+  &.danger {
+    border-color: #e31519;
+    color: #e31519;
+    a {
+      color: #e31519;
+    }
+  }
+  &.primary {
+    border-color: #007bfc;
+    color: #007bfc;
+    a {
+      color: #007bfc;
+    }
+  }
+  &.success {
+    border-color: #01a740;
+    color: #01a740;
+    a {
+      font-weight: 600;
+      color: #01a740;
+    }
+  }
+}

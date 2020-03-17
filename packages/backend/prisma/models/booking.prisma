@@ -1,0 +1,9 @@
+type Booking {
+  id: ID! @id @unique
+  customer: Customer
+  session: Session!
+  timeSlot: String
+  charge: Charge
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
